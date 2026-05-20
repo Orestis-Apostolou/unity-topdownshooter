@@ -1,0 +1,183 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Projects\\Unity-Projects\\topdownshooter\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{82EEE297-8B1F-5DA1-BCF3-7D741B0E64FF}|NavMeshPlus.csproj|c:\\users\\cp400\\downloads\\navmeshplus-master\\navmeshplus-master\\navmeshcomponents\\scripts\\agentrotate2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{82EEE297-8B1F-5DA1-BCF3-7D741B0E64FF}|NavMeshPlus.csproj|c:\\users\\cp400\\downloads\\navmeshplus-master\\navmeshplus-master\\navmeshcomponents\\scripts\\agentoverride2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|f:\\projects\\unity-projects\\topdownshooter\\assets\\scripts\\agent\\baselineoutofrangestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\agent\\baselineoutofrangestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|f:\\projects\\unity-projects\\topdownshooter\\assets\\scripts\\agent\\agentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\agent\\agentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|f:\\projects\\unity-projects\\topdownshooter\\assets\\scripts\\agent\\baselineinrangestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\agent\\baselineinrangestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|f:\\projects\\unity-projects\\topdownshooter\\assets\\scripts\\agent\\baselineagentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\agent\\baselineagentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|f:\\projects\\unity-projects\\topdownshooter\\assets\\scripts\\systems\\obstacle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\systems\\obstacle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|f:\\projects\\unity-projects\\topdownshooter\\assets\\scripts\\systems\\navmeshupdater.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\systems\\navmeshupdater.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|f:\\projects\\unity-projects\\topdownshooter\\assets\\scripts\\systems\\healthsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\systems\\healthsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|f:\\projects\\unity-projects\\topdownshooter\\assets\\scripts\\systems\\firingsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\systems\\firingsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AgentRotate2d.cs",
+              "DocumentMoniker": "C:\\Users\\cp400\\Downloads\\NavMeshPlus-master\\NavMeshPlus-master\\NavMeshComponents\\Scripts\\AgentRotate2d.cs",
+              "ToolTip": "C:\\Users\\cp400\\Downloads\\NavMeshPlus-master\\NavMeshPlus-master\\NavMeshComponents\\Scripts\\AgentRotate2d.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T12:11:52.852Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AgentOverride2d.cs",
+              "DocumentMoniker": "C:\\Users\\cp400\\Downloads\\NavMeshPlus-master\\NavMeshPlus-master\\NavMeshComponents\\Scripts\\AgentOverride2d.cs",
+              "ToolTip": "C:\\Users\\cp400\\Downloads\\NavMeshPlus-master\\NavMeshPlus-master\\NavMeshComponents\\Scripts\\AgentOverride2d.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA2wBoAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T12:11:31.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AgentController.cs",
+              "DocumentMoniker": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Agent\\AgentController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Agent\\AgentController.cs",
+              "ToolTip": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Agent\\AgentController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Agent\\AgentController.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAewA8AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:59:04.357Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BaselineOutOfRangeState.cs",
+              "DocumentMoniker": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Agent\\BaselineOutOfRangeState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Agent\\BaselineOutOfRangeState.cs",
+              "ToolTip": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Agent\\BaselineOutOfRangeState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Agent\\BaselineOutOfRangeState.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAgwBkAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:51:14.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Obstacle.cs",
+              "DocumentMoniker": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Systems\\Obstacle.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Systems\\Obstacle.cs",
+              "ToolTip": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Systems\\Obstacle.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Systems\\Obstacle.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:30:44.328Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "NavMeshUpdater.cs",
+              "DocumentMoniker": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Systems\\NavMeshUpdater.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Systems\\NavMeshUpdater.cs",
+              "ToolTip": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Systems\\NavMeshUpdater.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Systems\\NavMeshUpdater.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBYAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:30:33.354Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "HealthSystem.cs",
+              "DocumentMoniker": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Systems\\HealthSystem.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Systems\\HealthSystem.cs",
+              "ToolTip": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Systems\\HealthSystem.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Systems\\HealthSystem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:02:38.607Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FiringSystem.cs",
+              "DocumentMoniker": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Systems\\FiringSystem.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Systems\\FiringSystem.cs",
+              "ToolTip": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Systems\\FiringSystem.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Systems\\FiringSystem.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBAAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T09:38:34.62Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BaselineAgentController.cs",
+              "DocumentMoniker": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Agent\\BaselineAgentController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Agent\\BaselineAgentController.cs",
+              "ToolTip": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Agent\\BaselineAgentController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Agent\\BaselineAgentController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T09:31:41.498Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BaselineInRangeState.cs",
+              "DocumentMoniker": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Agent\\BaselineInRangeState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Agent\\BaselineInRangeState.cs",
+              "ToolTip": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Agent\\BaselineInRangeState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Agent\\BaselineInRangeState.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAIwCQAAABhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T09:26:35.659Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

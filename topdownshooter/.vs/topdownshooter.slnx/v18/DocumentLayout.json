@@ -1,0 +1,121 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Projects\\Unity-Projects\\topdownshooter\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|f:\\projects\\unity-projects\\topdownshooter\\assets\\scripts\\agent\\pagentoutofrangestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\agent\\pagentoutofrangestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|f:\\projects\\unity-projects\\topdownshooter\\assets\\scripts\\agent\\baselineoutofrangestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\agent\\baselineoutofrangestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|f:\\projects\\unity-projects\\topdownshooter\\assets\\scripts\\agent\\pagentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\agent\\pagentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|f:\\projects\\unity-projects\\topdownshooter\\assets\\scripts\\agent\\agentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\agent\\agentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|f:\\projects\\unity-projects\\topdownshooter\\assets\\scripts\\systems\\firingsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\systems\\firingsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|f:\\projects\\unity-projects\\topdownshooter\\assets\\scripts\\agent\\baselineinrangestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\agent\\baselineinrangestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PAgentOutOfRangeState.cs",
+              "DocumentMoniker": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Agent\\PAgentOutOfRangeState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Agent\\PAgentOutOfRangeState.cs",
+              "ToolTip": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Agent\\PAgentOutOfRangeState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Agent\\PAgentOutOfRangeState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T08:35:44.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PAgentController.cs",
+              "DocumentMoniker": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Agent\\PAgentController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Agent\\PAgentController.cs",
+              "ToolTip": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Agent\\PAgentController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Agent\\PAgentController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T08:49:45.279Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BaselineOutOfRangeState.cs",
+              "DocumentMoniker": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Agent\\BaselineOutOfRangeState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Agent\\BaselineOutOfRangeState.cs",
+              "ToolTip": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Agent\\BaselineOutOfRangeState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Agent\\BaselineOutOfRangeState.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAIwC4AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:51:14.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FiringSystem.cs",
+              "DocumentMoniker": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Systems\\FiringSystem.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Systems\\FiringSystem.cs",
+              "ToolTip": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Systems\\FiringSystem.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Systems\\FiringSystem.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAmwDQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T09:38:34.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BaselineInRangeState.cs",
+              "DocumentMoniker": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Agent\\BaselineInRangeState.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Agent\\BaselineInRangeState.cs",
+              "ToolTip": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Agent\\BaselineInRangeState.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Agent\\BaselineInRangeState.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAIwCQAAABhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-28T09:26:35.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AgentController.cs",
+              "DocumentMoniker": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Agent\\AgentController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Agent\\AgentController.cs",
+              "ToolTip": "F:\\Projects\\Unity-Projects\\topdownshooter\\Assets\\Scripts\\Agent\\AgentController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Agent\\AgentController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAIwBYAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T08:32:25.973Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
