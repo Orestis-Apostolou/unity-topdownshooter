@@ -9,12 +9,6 @@ public class PAgentOutOfRangeState : State
         agent.navAgent.updateUpAxis = false;
     }
 
-    public override void Enter()
-    {
-        agent.aimAngle = 10.0f;
-        base.Enter();
-    }
-
     public override void FixedUpdate()
     {
         agent.navAgent.speed = agent.EffectiveMoveSpeed;

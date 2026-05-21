@@ -2853,6 +2853,7 @@ GameObject:
   - component: {fileID: 1870376631}
   - component: {fileID: 1870376632}
   - component: {fileID: 1870376633}
+  - component: {fileID: 1870376634}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -3065,7 +3066,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1870376620}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b142f1ee18a4d494ba23e8ffdac7c362, type: 3}
   m_Name: 
@@ -3118,6 +3119,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8550f034611a06e4f88fc261204d8a7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: NavMeshPlus::NavMeshPlus.Extensions.AgentRotate2d
+--- !u!114 &1870376634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870376620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5711c027f2de1e41806690ed405288b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PAgentController
+  player: {fileID: 1450570952}
+  aimAngle: 2
 --- !u!1 &1928359721
 GameObject:
   m_ObjectHideFlags: 0

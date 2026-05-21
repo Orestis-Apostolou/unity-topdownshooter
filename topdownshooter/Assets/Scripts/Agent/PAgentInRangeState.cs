@@ -1,3 +1,4 @@
+using UnityEditor.Rendering;
 using UnityEngine;
 
 // NOTE: Agent might struggle with close range if the target is moving a lot
@@ -54,7 +55,7 @@ public class PAgentInRangeState : State
         Vector2 playerPos = agent.player.transform.position;
         float distance = Vector2.Distance(agent.transform.position, playerPos);
         float timeToHit = distance / agent.firingSystem.getProjSpeed();
-        Debug.Log($"playerVelocity: {agent.playerVelocity}, timeToHit: {timeToHit}, predicted offset: {agent.playerVelocity * timeToHit}");
+
         return playerPos + agent.playerVelocity * timeToHit;
     }
 }
