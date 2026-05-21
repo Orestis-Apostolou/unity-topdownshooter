@@ -5,6 +5,6 @@ public class PAgentController : AgentController
     protected override void Start()
     {
         lastPlayerPos = player.transform.position;
-        stateMachine.ChangeState(new BaselineOutOfRangeState(this));
+        stateMachine.ChangeState(new PAgentOutOfRangeState(this));
     }
 }

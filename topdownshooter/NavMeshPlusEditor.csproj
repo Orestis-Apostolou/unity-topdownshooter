@@ -49,50 +49,22 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.3.9f1\Editor\Data\Tools\BuildPipeline\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="C:\Users\cp400\Downloads\NavMeshPlus-master\NavMeshPlus-master\NavMeshComponents\Editor\NavMeshModifierTilemapEditor.cs">
-      <Link>NavMeshComponents\Editor\NavMeshModifierTilemapEditor.cs</Link>
-    </Compile>
-    <Compile Include="C:\Users\cp400\Downloads\NavMeshPlus-master\NavMeshPlus-master\NavMeshComponents\Editor\NavMeshLinkEditor.cs">
-      <Link>NavMeshComponents\Editor\NavMeshLinkEditor.cs</Link>
-    </Compile>
-    <Compile Include="C:\Users\cp400\Downloads\NavMeshPlus-master\NavMeshPlus-master\NavMeshComponents\Editor\NavMeshModifierVolumeEditor.cs">
-      <Link>NavMeshComponents\Editor\NavMeshModifierVolumeEditor.cs</Link>
-    </Compile>
-    <Compile Include="C:\Users\cp400\Downloads\NavMeshPlus-master\NavMeshPlus-master\NavMeshComponents\Editor\NavMeshModifierEditor.cs">
-      <Link>NavMeshComponents\Editor\NavMeshModifierEditor.cs</Link>
-    </Compile>
-    <Compile Include="C:\Users\cp400\Downloads\NavMeshPlus-master\NavMeshPlus-master\NavMeshComponents\Editor\NavMeshSurfaceEditor.cs">
-      <Link>NavMeshComponents\Editor\NavMeshSurfaceEditor.cs</Link>
-    </Compile>
-    <Compile Include="C:\Users\cp400\Downloads\NavMeshPlus-master\NavMeshPlus-master\NavMeshComponents\Editor\RootSources2dEditor.cs">
-      <Link>NavMeshComponents\Editor\RootSources2dEditor.cs</Link>
-    </Compile>
-    <Compile Include="C:\Users\cp400\Downloads\NavMeshPlus-master\NavMeshPlus-master\NavMeshComponents\Editor\NavMeshComponentsGUIUtility.cs">
-      <Link>NavMeshComponents\Editor\NavMeshComponentsGUIUtility.cs</Link>
-    </Compile>
-    <Compile Include="C:\Users\cp400\Downloads\NavMeshPlus-master\NavMeshPlus-master\NavMeshComponents\Editor\CollectSourcesCache2dEditor.cs">
-      <Link>NavMeshComponents\Editor\CollectSourcesCache2dEditor.cs</Link>
-    </Compile>
-    <Compile Include="C:\Users\cp400\Downloads\NavMeshPlus-master\NavMeshPlus-master\NavMeshComponents\Editor\NavMeshAssetManager.cs">
-      <Link>NavMeshComponents\Editor\NavMeshAssetManager.cs</Link>
-    </Compile>
-    <Compile Include="C:\Users\cp400\Downloads\NavMeshPlus-master\NavMeshPlus-master\NavMeshComponents\Editor\AgentOverride2dEditor.cs">
-      <Link>NavMeshComponents\Editor\AgentOverride2dEditor.cs</Link>
-    </Compile>
-    <Compile Include="C:\Users\cp400\Downloads\NavMeshPlus-master\NavMeshPlus-master\NavMeshComponents\Editor\NavMeshAgentAttributePropertyDrawer.cs">
-      <Link>NavMeshComponents\Editor\NavMeshAgentAttributePropertyDrawer.cs</Link>
-    </Compile>
-    <Compile Include="C:\Users\cp400\Downloads\NavMeshPlus-master\NavMeshPlus-master\NavMeshComponents\Editor\NavMeshAreaAttributePropertyDrawer.cs">
-      <Link>NavMeshComponents\Editor\NavMeshAreaAttributePropertyDrawer.cs</Link>
-    </Compile>
-    <Compile Include="C:\Users\cp400\Downloads\NavMeshPlus-master\NavMeshPlus-master\NavMeshComponents\Editor\CollectSources2dEditor.cs">
-      <Link>NavMeshComponents\Editor\CollectSources2dEditor.cs</Link>
-    </Compile>
+    <Compile Include="Library\PackageCache\com.h8man.2d.navmeshplus@53de7d5c64d8\NavMeshComponents\Editor\NavMeshModifierTilemapEditor.cs" />
+    <Compile Include="Library\PackageCache\com.h8man.2d.navmeshplus@53de7d5c64d8\NavMeshComponents\Editor\NavMeshLinkEditor.cs" />
+    <Compile Include="Library\PackageCache\com.h8man.2d.navmeshplus@53de7d5c64d8\NavMeshComponents\Editor\NavMeshModifierVolumeEditor.cs" />
+    <Compile Include="Library\PackageCache\com.h8man.2d.navmeshplus@53de7d5c64d8\NavMeshComponents\Editor\NavMeshModifierEditor.cs" />
+    <Compile Include="Library\PackageCache\com.h8man.2d.navmeshplus@53de7d5c64d8\NavMeshComponents\Editor\NavMeshSurfaceEditor.cs" />
+    <Compile Include="Library\PackageCache\com.h8man.2d.navmeshplus@53de7d5c64d8\NavMeshComponents\Editor\RootSources2dEditor.cs" />
+    <Compile Include="Library\PackageCache\com.h8man.2d.navmeshplus@53de7d5c64d8\NavMeshComponents\Editor\NavMeshComponentsGUIUtility.cs" />
+    <Compile Include="Library\PackageCache\com.h8man.2d.navmeshplus@53de7d5c64d8\NavMeshComponents\Editor\CollectSourcesCache2dEditor.cs" />
+    <Compile Include="Library\PackageCache\com.h8man.2d.navmeshplus@53de7d5c64d8\NavMeshComponents\Editor\NavMeshAssetManager.cs" />
+    <Compile Include="Library\PackageCache\com.h8man.2d.navmeshplus@53de7d5c64d8\NavMeshComponents\Editor\AgentOverride2dEditor.cs" />
+    <Compile Include="Library\PackageCache\com.h8man.2d.navmeshplus@53de7d5c64d8\NavMeshComponents\Editor\NavMeshAgentAttributePropertyDrawer.cs" />
+    <Compile Include="Library\PackageCache\com.h8man.2d.navmeshplus@53de7d5c64d8\NavMeshComponents\Editor\NavMeshAreaAttributePropertyDrawer.cs" />
+    <Compile Include="Library\PackageCache\com.h8man.2d.navmeshplus@53de7d5c64d8\NavMeshComponents\Editor\CollectSources2dEditor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="C:\Users\cp400\Downloads\NavMeshPlus-master\NavMeshPlus-master\NavMeshComponents\Editor\NavMeshComponentsEditor.asmdef">
-      <Link>NavMeshComponents\Editor\NavMeshComponentsEditor.asmdef</Link>
-    </None>
+    <None Include="Library\PackageCache\com.h8man.2d.navmeshplus@53de7d5c64d8\NavMeshComponents\Editor\NavMeshComponentsEditor.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

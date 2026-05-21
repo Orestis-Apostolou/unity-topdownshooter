@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.TestTools;
 public class PAgentOutOfRangeState : State
 {
     public PAgentOutOfRangeState(AgentController agent) : base(agent)
@@ -7,6 +8,13 @@ public class PAgentOutOfRangeState : State
         agent.navAgent.updateRotation = false;
         agent.navAgent.updateUpAxis = false;
     }
+
+    public override void Enter()
+    {
+        agent.aimAngle = 10.0f;
+        base.Enter();
+    }
+
     public override void FixedUpdate()
     {
         agent.navAgent.speed = agent.EffectiveMoveSpeed;
@@ -14,18 +22,18 @@ public class PAgentOutOfRangeState : State
 
         RotateTowardPlayer();
 
-        if (agent.heatSystem.IsOverheated)
-            agent.stateMachine.ChangeState();
-        else if (agent.firingSystem.IsInRange(agent.player.transform.position) && HasLOS() && IsAimed())
-            agent.stateMachine.ChangeState();
+        if (agent.firingSystem.IsInRange(agent.player.transform.position) && HasLOS() && IsAimed())
+            agent.stateMachine.ChangeState(new PAgentInRangeState(agent));
     }
+
     private void RotateTowardPlayer()
     {
-        Vector2 direction = (agent.player.transform.position - agent.transform.position).normalized;
+        Vector2 direction = (GetPredictedPosition() - (Vector2) agent.transform.position).normalized;
         float targetAngle = Vector2.SignedAngle(Vector2.up, direction);
         float newRotation = Mathf.MoveTowardsAngle(agent.rb.rotation, targetAngle, agent.rotspeed * Time.fixedDeltaTime);
         agent.rb.MoveRotation(newRotation);
     }
+
     private bool HasLOS()
     {
         Vector2 direction = (GetPredictedPosition() - (Vector2) agent.transform.position).normalized;
@@ -48,6 +56,7 @@ public class PAgentOutOfRangeState : State
 
         return Mathf.Abs(Mathf.DeltaAngle(agent.rb.rotation, targetAngle)) < agent.aimAngle;
     }
+
     private Vector2 GetPredictedPosition()
     {
         // Predict where the player will be if they keep moving with the same movespeed
