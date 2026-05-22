@@ -11,13 +11,11 @@ public class HeatSystem : MonoBehaviour
     private float heat = 0f;
     private float overheatTimer = 0f;
     private bool isOverheated = false;
-    private HealthSystem healthSystem;
+    //private HealthSystem healthSystem;
 
     [Header("Overheat Settings")]
-    public float dangerThresh = 0.8f;       // Threshold at which you start taking self damage when shooting
-    public float dangerDmgPerShot = 5f;     // Points of self damage when firing while above 'dangerThresh'% heat
     public float overheatSlowDur = 3f;      // Seconds of slow when hitting 100% on heat
-    public float overheatSlow = 0.35f;      // Slow factor
+    public float overheatSlow = 0.4f;       // Slow factor
     
     public bool IsOverheated => isOverheated;
 
@@ -26,7 +24,7 @@ public class HeatSystem : MonoBehaviour
         return !isOverheated;
     }
 
-    public bool CanFireWithoutOH()
+    public bool CanFireSafe()
     {
         if (isOverheated)
             return false;
@@ -34,19 +32,8 @@ public class HeatSystem : MonoBehaviour
         return heat + heatPerShot <= maxHeat;
     }
 
-    public bool CanFireSafe()
-    {
-        if (HeatPercent() <= dangerThresh)
-            return true;
-
-        return false;
-    }
-
     public void Fire()
     {
-        if (HeatPercent() >= dangerThresh)
-            healthSystem.TakeDamage(dangerDmgPerShot);
-
         heat += heatPerShot;
 
         if (heat >= maxHeat)
@@ -59,11 +46,6 @@ public class HeatSystem : MonoBehaviour
     public float HeatPercent()
     {
         return heat / maxHeat;
-    }
-
-    private void Awake()
-    {
-        healthSystem = GetComponent<HealthSystem>();
     }
 
     void Update()

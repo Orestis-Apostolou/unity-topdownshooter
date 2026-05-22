@@ -26,7 +26,7 @@ public class PAgentInRangeState : State
             agent.heatSystem.Fire();
         }
 
-        if (agent.heatSystem.HeatPercent() >= agent.heatSystem.dangerThresh)
+        if (agent.heatSystem.HeatPercent() >= 0.85f)
             agent.stateMachine.ChangeState(new PAgentOverheatedState(agent));
         else if (!agent.firingSystem.IsInRange(agent.player.transform.position, 0.75f))
             agent.stateMachine.ChangeState(new PAgentOutOfRangeState(agent));
