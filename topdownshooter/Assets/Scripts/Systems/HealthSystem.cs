@@ -20,12 +20,22 @@ public class HealthSystem : MonoBehaviour
         return health / maxHealth;
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         health -= damage;
         if (health <= 0)
         {
-            Destroy(gameObject);
+            OnDeath();
         }
+    }
+
+    public void ResetHealth()
+    {
+        health = maxHealth;
+    }
+
+    protected virtual void OnDeath()
+    {
+        GameManager.Instance.OnAgentDied(gameObject);
     }
 }   

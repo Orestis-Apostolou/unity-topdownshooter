@@ -60,4 +60,11 @@ public class HeatSystem : MonoBehaviour
         if (heat >= 0f)
             heat = Mathf.Max(0f, heat - recoveryRate * Time.deltaTime);
     }
+
+    public void ResetHeat()
+    {
+        isOverheated = false;
+        overheatTimer = 0;
+        heat = maxHeat;
+    }
 }
