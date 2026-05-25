@@ -64,7 +64,7 @@ public class HeatSystem : MonoBehaviour
     public void ResetHeat()
     {
         isOverheated = false;
-        overheatTimer = 0;
-        heat = maxHeat;
+        overheatTimer = 0f;
+        heat = 0f;
     }
 }

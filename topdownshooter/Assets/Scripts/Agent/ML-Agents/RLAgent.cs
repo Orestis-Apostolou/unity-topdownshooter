@@ -68,9 +68,8 @@ public class RLAgent : Agent
 
     }
 
-    public override void OnEpisodeBegin()
-    {
-        GameManager.Instance.ResetGame();
-    }
-
+    // public override void Heuristic(in ActionBuffers actionsOut)
+    // {
+    //     // Heuristic can help test the agent with manual input
+    // }
 }
