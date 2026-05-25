@@ -1685,6 +1685,9 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
+  enemy: {fileID: 0}
+  movespeed: 6
+  rotspeed: 130
 --- !u!114 &830600342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1698,10 +1701,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.ML-Agents::Unity.MLAgents.Policies.BehaviorParameters
   m_BrainParameters:
-    VectorObservationSize: 1
+    VectorObservationSize: 9
     NumStackedVectorObservations: 1
     m_ActionSpec:
-      m_NumContinuousActions: 2
+      m_NumContinuousActions: 3
       BranchSizes: 02000000
     VectorActionSize: 
     VectorActionDescriptions: []
@@ -2685,6 +2688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   playerAgent: {fileID: 1450570952}
+  rlAgent: {fileID: 0}
   enemyAgent: {fileID: 1870376620}
   breakableWalls:
   - {fileID: 448556379}

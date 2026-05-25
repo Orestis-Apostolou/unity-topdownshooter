@@ -36,25 +36,41 @@ public class RLAgent : Agent
     {
         sensor.AddObservation((Vector2)transform.position);         // 2
         sensor.AddObservation((Vector2)enemy.transform.position);   // 2
+        sensor.AddObservation((Vector2) transform.up);              // 2
+        sensor.AddObservation(healthSys.HealthPercent());           // 1
+        sensor.AddObservation(heatSys.HeatPercent());               // 1
+        sensor.AddObservation(heatSys.IsOverheated);                // 1
     }
 
     // Actions in code as specified from the Inspector
     public override void OnActionReceived(ActionBuffers actions)
     {
+        // CONTINUOUS ACTIONS
+
         float moveX = actions.ContinuousActions[0];
         float moveY = actions.ContinuousActions[1];
         float rotInput = actions.ContinuousActions[2];
 
         float effMovespeed = movespeed * (heatSys.IsOverheated ? heatSys.overheatSlow : 1f);
 
-        Vector2 movement = new Vector2(moveX, moveY); //.normalized ?
+        Vector2 movement = new Vector2(moveX, moveY);
         rb.MovePosition(rb.position + movement * effMovespeed * Time.fixedDeltaTime);
         rb.MoveRotation(rb.rotation + rotspeed * Time.fixedDeltaTime * -rotInput);
+
+        // DISCRETE ACTIONS
+
+        int shootAction = actions.DiscreteActions[0]; // 0 = don't shoot, 1 = shoot
+        if (shootAction == 1 && firingSys.CanFire() && heatSys.CanFire())
+        {
+            firingSys.Fire();
+            heatSys.Fire();
+        }
+
     }
 
     public override void OnEpisodeBegin()
     {
-        
+        GameManager.Instance.ResetGame();
     }
 
 }

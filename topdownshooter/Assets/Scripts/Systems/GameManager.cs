@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.MLAgents;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     [Header("Agent References")]
     [Tooltip("RL Agent / Player")]
     public GameObject playerAgent;
+    [SerializeField] private RLAgent rlAgent;
 
     [Tooltip("Traditional Agent")]
     public GameObject enemyAgent;
@@ -25,7 +27,7 @@ public class GameManager : MonoBehaviour
     public int EnemyWins  => enemyWins;
 
     [Header("Reset Settings")]
-    public float resetDelay = 1.5f;
+    public float resetDelay = 2.5f;
 
     private Vector3 playerSpawn;
     private Quaternion playerRot;
@@ -38,11 +40,13 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         // Get spawnpoints
-        if(playerAgent != null && playerAgent != null)
-        {
-            playerSpawn = playerAgent.transform.position;
-            enemySpawn = enemyAgent.transform.position;
-        }
+        playerSpawn = playerAgent.transform.position;
+        enemySpawn = enemyAgent.transform.position;
+
+        playerRot = playerAgent.transform.rotation;
+        enemyRot = enemyAgent.transform.rotation;
+        
+        rlAgent = playerAgent.GetComponent<RLAgent>();
 
         // Singleton setup
         if (Instance != null && Instance != this)
@@ -66,11 +70,13 @@ public class GameManager : MonoBehaviour
         if (deadAgent == playerAgent)
         {
             enemyWins++;
+            rlAgent?.AddReward(-1f);
             Debug.Log($"[GameManager] Enemy wins the round! Score → Player:{playerWins} Enemy:{enemyWins}");
         }
         else if (deadAgent == enemyAgent)
         {
             playerWins++;
+            rlAgent?.AddReward(+1f);
             Debug.Log($"[GameManager] Player wins the round! Score → Player:{playerWins} Enemy:{enemyWins}");
         }
         else
@@ -78,6 +84,12 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning($"[GameManager] Unknown agent died: {deadAgent.name}. No score awarded.");
         }
 
+        if (Academy.Instance.IsCommunicatorOn) // If RL agent is training
+        {
+            ResetGame();
+            rlAgent.EndEpisode();
+            return;            
+        }
         StartCoroutine(ResetAfterDelay());
     }
 
@@ -107,12 +119,9 @@ public class GameManager : MonoBehaviour
         // Re-enable defeated agent
         agent.SetActive(true);
 
-        // Reposition
-        if (spawnPoint != null)
-        {
-            agent.transform.position = spawnPoint;
-            agent.transform.rotation = spawnRot;
-        }
+        // Reset Position and Rotation
+        agent.transform.position = spawnPoint;
+        agent.transform.rotation = spawnRot;
 
         // Reset HealthSystem
         HealthSystem health = agent.GetComponent<HealthSystem>();
