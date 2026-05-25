@@ -1,6 +1,44 @@
-topdownshooter/Library/PackageCache/com.unity.burst@07790c2d06d9/.Runtime/libburst-llvm-19.dylib
-topdownshooter/Library/*
-topdownshooter/Logs/*
-topdownshooter/Temp/*
+# ==========================================
+# Unity Project & Editor Files (Crucial)
+# ==========================================
+/[Tt]opdownshooter/[Ll]ibrary/
+/[Tt]opdownshooter/[Tt]emp/
+/[Tt]opdownshooter/[Oo]bj/
+/[Tt]opdownshooter/[Bb]uild/
+/[Tt]opdownshooter/[Bb]uilds/
+/[Tt]opdownshooter/[Ll]ogs/
+/[Tt]opdownshooter/[Mm]emory[Cc]aptures/
+
+# ==========================================
+# IDE & Solution Files (Visual Studio, Rider)
+# ==========================================
+*.csproj
+*.sln
 *.slnx
-topdownshooter/.vs/*
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+/[Tt]opdownshooter/.vs/
+/[Tt]opdownshooter/.idea/
+/[Tt]opdownshooter/.rider/
+
+# ==========================================
+# Unity User Settings & Layouts
+# ==========================================
+/[Tt]opdownshooter/[Uu]ser[Ss]ettings/
+/[Tt]opdownshooter/[Vv]isual[Ss]tudio/
+/[Tt]opdownshooter/[Vv]ersion[Cc]ontrol/
+
+# ==========================================
+# ML-Agents Training & Telemetry
+# ==========================================
+# Ignore raw logs, tensorboard data, and intermediate torch models
+results/*/run_logs/
+results/*/*/checkpoint.pt
+results/*/*/*.pt
+results/*/*/*.tfevents.*
+
+# Unity local ML-Agents performance timers
+/[Tt]opdownshooter/Assets/ML
