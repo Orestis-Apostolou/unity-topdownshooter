@@ -79,12 +79,12 @@ public class GameManager : MonoBehaviour
             rlAgent?.AddReward(+1f);
             Debug.Log($"[GameManager] Player wins the round! Score → Player:{playerWins} Enemy:{enemyWins}");
         }
-        else
-        {
-            Debug.LogWarning($"[GameManager] Unknown agent died: {deadAgent.name}. No score awarded.");
-        }
+        //else
+        //{
+        //    Debug.LogWarning($"[GameManager] Unknown agent died: {deadAgent.name}. No score awarded.");
+        //}
 
-        if (Academy.Instance.IsCommunicatorOn) // If RL agent is training
+        if (Academy.Instance.IsCommunicatorOn) // If RL agent is training reset instantly
         {
             ResetGame();
             rlAgent.EndEpisode();
@@ -93,6 +93,15 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ResetAfterDelay());
     }
 
+    public void OnAgentDamaged(GameObject agent)
+    {
+        if(agent == playerAgent)
+            rlAgent?.AddReward(-0.15f); // If the RL agent took damage
+        else if (agent == enemyAgent)
+            rlAgent?.AddReward(+0.15f); // If the enemy agent took damage
+    }
+
+    // Small delay when resetting for manual play
     private IEnumerator ResetAfterDelay()
     {
         Time.timeScale = 0.15f;

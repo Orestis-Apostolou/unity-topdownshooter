@@ -23,6 +23,7 @@ public class HealthSystem : MonoBehaviour
     public virtual void TakeDamage(float damage)
     {
         health -= damage;
+        GameManager.Instance.OnAgentDamaged(gameObject);
         if (health <= 0)
         {
             OnDeath();
