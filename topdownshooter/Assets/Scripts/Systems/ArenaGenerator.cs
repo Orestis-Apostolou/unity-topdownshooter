@@ -5,13 +5,14 @@ public class ArenaGenerator : MonoBehaviour
     public float wallThickness = 1f;
     private Vector2 arenaSize = Vector2.zero;
     public GameObject wallPrefab;
-
     void Start()
     {
         Camera cam = Camera.main;
         float height = cam.orthographicSize * 2f;
         float width = height * (16/9f);
         arenaSize = new Vector2 (width, height);
+
+        Debug.Log(arenaSize);
 
         CreateWall("WallTop", new Vector2(0, arenaSize.y/2 + wallThickness/2), new Vector2(arenaSize.x + 2 * wallThickness, wallThickness));
         CreateWall("WallBottom", new Vector2(0, -arenaSize.y/2 - wallThickness/2), new Vector2(arenaSize.x + 2 * wallThickness, wallThickness));
