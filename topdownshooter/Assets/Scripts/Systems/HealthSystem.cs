@@ -24,6 +24,7 @@ public class HealthSystem : MonoBehaviour
     {
         health -= damage;
         GameManager.Instance.OnAgentDamaged(gameObject);
+        
         if (health <= 0)
         {
             OnDeath();

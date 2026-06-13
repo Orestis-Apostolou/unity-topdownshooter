@@ -68,21 +68,11 @@ public class GameManager : MonoBehaviour
         roundOver = true;
 
         if (deadAgent == playerAgent)
-        {
-            enemyWins++;
             rlAgent?.AddReward(-1f);
-            Debug.Log($"[GameManager] Enemy wins the round! Score → Player:{playerWins} Enemy:{enemyWins}");
-        }
         else if (deadAgent == enemyAgent)
-        {
-            playerWins++;
             rlAgent?.AddReward(+1f);
-            Debug.Log($"[GameManager] Player wins the round! Score → Player:{playerWins} Enemy:{enemyWins}");
-        }
-        //else
-        //{
-        //    Debug.LogWarning($"[GameManager] Unknown agent died: {deadAgent.name}. No score awarded.");
-        //}
+
+        MetricsManager.Instance.OnRoundEnd(deadAgent == enemyAgent);
 
         if (Academy.Instance.IsCommunicatorOn) // If RL agent is training reset instantly
         {
@@ -96,9 +86,15 @@ public class GameManager : MonoBehaviour
     public void OnAgentDamaged(GameObject agent)
     {
         if(agent == playerAgent)
+        {
             rlAgent?.AddReward(-0.15f); // If the RL agent took damage
+        }
         else if (agent == enemyAgent)
-            rlAgent?.AddReward(+0.15f); // If the enemy agent took damage
+        {
+            rlAgent?.AddReward(+0.15f); // If the enemy agent took damage            
+        }
+
+        MetricsManager.Instance.OnShotHit(agent);
     }
 
     // Small delay when resetting for manual play

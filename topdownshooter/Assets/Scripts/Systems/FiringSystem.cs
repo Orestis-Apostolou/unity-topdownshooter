@@ -41,21 +41,9 @@ public class FiringSystem : MonoBehaviour
             attack.owner = gameObject;
 
             fireCooldown = 1.0f / fireRate;
-        }
-    }
 
-    public void FireSpread()
-    {
-        if (CanFire())
-        {
-            float angle = Random.Range(-spreadRange, spreadRange);
-            Quaternion rot = Quaternion.AngleAxis(angle, Vector3.forward) * transform.rotation;
-
-            GameObject attack_obj = Instantiate(attackPrefab, transform.position, rot);
-            Attack attack = attack_obj.GetComponent<Attack>();
-            attack.owner = gameObject;
-
-            fireCooldown = 1.0f / fireRate;
+            // Notify metrics manager that a shot was fired
+            MetricsManager.Instance.OnShotFired(gameObject);
         }
     }
 
