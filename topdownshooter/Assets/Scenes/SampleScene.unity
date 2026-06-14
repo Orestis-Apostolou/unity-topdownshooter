@@ -534,8 +534,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d03805af776b1bdffaf47c62dc77e5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  playerAgent: {fileID: 0}
-  enemyAgent: {fileID: 0}
+  playerAgent: {fileID: 1450570952}
+  enemyAgent: {fileID: 1870376620}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1592,32 +1592,6 @@ MonoBehaviour:
   playerAgent: {fileID: 1450570952}
   rlAgent: {fileID: 1450570962}
   enemyAgent: {fileID: 1870376620}
-  breakableWalls:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   playerWins: 0
   enemyWins: 0
   resetDelay: 1.5
@@ -1920,7 +1894,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!50 &1870376622
 Rigidbody2D:
   serializedVersion: 5

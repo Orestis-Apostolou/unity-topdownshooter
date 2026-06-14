@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ArenaGenerator : MonoBehaviour
 {
+    public static ArenaGenerator Instance { get; private set; }
     public float wallThickness = 1f;
     private Vector2 arenaSize = Vector2.zero;
     // public GameObject wallPrefab;
@@ -18,11 +19,26 @@ public class ArenaGenerator : MonoBehaviour
     }
 
     public BlockLayouts[] blocks = new BlockLayouts[9]; // row-major, index = (x+1) + (y+1)*3
+    private Transform layoutsParent;
+
+    void Awake()
+    {
+        // Singleton setup
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
 
     void Start()
     {
         Camera cam = Camera.main;
         camCenter = cam.transform.position;
+
+        layoutsParent = new GameObject("GeneratedLayouts").transform;
+        layoutsParent.parent = transform;
 
         float height = cam.orthographicSize * 2f;
         float width = height * (16f / 9f);
@@ -36,7 +52,7 @@ public class ArenaGenerator : MonoBehaviour
         GenerateLayout();
     }
 
-    private void GenerateLayout()
+    public void GenerateLayout()
     {
         for (int x = -1; x <= 1; x++)
         {
@@ -55,9 +71,20 @@ public class ArenaGenerator : MonoBehaviour
                 }
 
                 GameObject chosen = options[Random.Range(0, options.Count)];
-                Instantiate(chosen, blockCenter, Quaternion.identity);
+                GameObject instance = Instantiate(chosen, blockCenter, Quaternion.identity);
+                instance.transform.parent = layoutsParent;
             }
         }
+    }
+
+    public void DestroyLayout()
+    {
+        List<Transform> children = new List<Transform>();
+        foreach (Transform child in layoutsParent)
+            children.Add(child);
+        
+        foreach (Transform child in children)
+            DestroyImmediate(child.gameObject);
     }
 
     private void CreateWall(string name, Vector2 position, Vector2 size)

@@ -22,6 +22,10 @@ public class HealthSystem : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
+        // Safeguard so bullets don't deal damage while the round gets reset
+        if (GameManager.Instance.roundOver)
+            return;
+        
         health -= damage;
         GameManager.Instance.OnAgentDamaged(gameObject);
         

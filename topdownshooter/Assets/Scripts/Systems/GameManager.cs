@@ -1,6 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.MLAgents;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -15,9 +14,9 @@ public class GameManager : MonoBehaviour
     [Tooltip("Traditional Agent")]
     public GameObject enemyAgent;
 
-    [Header("Breakable Walls")]
-    [Tooltip("Drag all breakable wall GameObjects here.")]
-    public List<GameObject> breakableWalls;
+    // [Header("Breakable Walls")]
+    // [Tooltip("Drag all breakable wall GameObjects here.")]
+    // public List<GameObject> breakableWalls;
 
     [Header("Score (read-only in Inspector)")]
     [SerializeField] private int playerWins = 0;
@@ -35,7 +34,7 @@ public class GameManager : MonoBehaviour
     private Vector3 enemySpawn;
     private Quaternion enemyRot;
 
-    private bool roundOver = false;
+    public bool roundOver {get; private set;} = false;
 
     private void Awake()
     {
@@ -64,23 +63,22 @@ public class GameManager : MonoBehaviour
 
     public void OnAgentDied(GameObject deadAgent)
     {
-        if (roundOver) return; // guard against double-calls in same frame
+        if (roundOver) return;
         roundOver = true;
 
         if (deadAgent == playerAgent)
+        {
+            enemyWins++;
             rlAgent?.AddReward(-1f);
+        }
         else if (deadAgent == enemyAgent)
+        {
+            playerWins++;
             rlAgent?.AddReward(+1f);
+        }
 
         MetricsManager.Instance.OnRoundEnd(deadAgent == enemyAgent);
-
-        if (Academy.Instance.IsCommunicatorOn) // If RL agent is training reset instantly
-        {
-            ResetGame();
-            rlAgent.EndEpisode();
-            return;            
-        }
-        StartCoroutine(ResetAfterDelay());
+        StartCoroutine(ResetSequence());
     }
 
     public void OnAgentDamaged(GameObject agent)
@@ -97,22 +95,42 @@ public class GameManager : MonoBehaviour
         MetricsManager.Instance.OnShotHit(agent);
     }
 
-    // Small delay when resetting for manual play
-    private IEnumerator ResetAfterDelay()
+    private IEnumerator ResetSequence()
     {
-        Time.timeScale = 0.15f;
-        yield return new WaitForSecondsRealtime(resetDelay);
-        Time.timeScale = 1f;
-        ResetGame();
+        yield return null; // exit physics callback context first
+
+        foreach (GameObject bullet in GameObject.FindGameObjectsWithTag("Bullet"))
+            Destroy(bullet);
+
+        ArenaGenerator.Instance.DestroyLayout();
+        playerAgent.SetActive(false);
+        enemyAgent.SetActive(false);
+
+        ArenaGenerator.Instance.GenerateLayout();
+
+        // Wait one frame for Unity to register new objects
+        yield return null;
+        yield return NavMeshUpdater.Instance.RebuildAndWait();
+
+        ResetAgent(playerAgent, playerSpawn, playerRot);
+        ResetAgent(enemyAgent, enemySpawn, enemyRot);
+
+        roundOver = false;
+        rlAgent?.EndEpisode();
     }
 
     public void ResetGame()
     {
         roundOver = false;
 
+        foreach (GameObject bullet in GameObject.FindGameObjectsWithTag("Bullet"))
+            DestroyImmediate(bullet);
+
         ResetAgent(playerAgent, playerSpawn, playerRot);
         ResetAgent(enemyAgent,  enemySpawn, enemyRot);
-        ResetWalls();
+        
+        ArenaGenerator.Instance.DestroyLayout();
+        ArenaGenerator.Instance.GenerateLayout();
 
         Debug.Log("[GameManager] Arena reset. New round started.");
     }
@@ -120,9 +138,6 @@ public class GameManager : MonoBehaviour
     private void ResetAgent(GameObject agent, Vector3 spawnPoint, Quaternion spawnRot)
     {
         if (agent == null) return;
-
-        // Re-enable defeated agent
-        agent.SetActive(true);
 
         // Reset Position and Rotation
         agent.transform.position = spawnPoint;
@@ -140,17 +155,10 @@ public class GameManager : MonoBehaviour
         Rigidbody2D rb = agent.GetComponent<Rigidbody2D>();
         rb.linearVelocity  = Vector2.zero;
         rb.angularVelocity = 0f;
-    }
 
-    private void ResetWalls()
-    {
-        foreach(GameObject wall in breakableWalls)
-        {
-            HealthSystem hs = wall.GetComponent<HealthSystem>();
-            hs.ResetHealth();
-            wall.SetActive(true);
-        }
-    }   
+        // Re-enable defeated agent
+        agent.SetActive(true);
+    }  
 
     // public string GetScoreString() => $"Player: {playerWins}  |  Enemy: {enemyWins}";
 }

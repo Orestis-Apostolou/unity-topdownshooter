@@ -5,12 +5,12 @@ public class Obstacle : HealthSystem
 {
     void OnDisable()
     {
-        NavMeshUpdater.instance.UpdateMesh();
+        NavMeshUpdater.Instance.UpdateMesh();
     }
 
     void OnEnable()
     {
-        NavMeshUpdater.instance.UpdateMesh();  
+        NavMeshUpdater.Instance.UpdateMesh();  
     }
 
     protected override void OnDeath()
