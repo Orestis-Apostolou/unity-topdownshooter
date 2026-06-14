@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.MLAgents;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -109,14 +110,16 @@ public class GameManager : MonoBehaviour
         ArenaGenerator.Instance.GenerateLayout();
 
         // Wait one frame for Unity to register new objects
-        yield return null;
-        yield return NavMeshUpdater.Instance.RebuildAndWait();
+        yield return StartCoroutine(NavMeshUpdater.Instance.UpdateAndWait());
 
         ResetAgent(playerAgent, playerSpawn, playerRot);
         ResetAgent(enemyAgent, enemySpawn, enemyRot);
 
         roundOver = false;
-        rlAgent?.EndEpisode();
+        if (Academy.Instance.IsCommunicatorOn)
+        {
+            rlAgent?.EndEpisode();
+        }
     }
 
     public void ResetGame()
