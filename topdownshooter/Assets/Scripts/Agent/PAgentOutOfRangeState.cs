@@ -14,6 +14,12 @@ public class PAgentOutOfRangeState : State
         agent.navAgent.speed = agent.EffectiveMoveSpeed;
         agent.navAgent.SetDestination(agent.player.transform.position);
 
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(agent.player.transform.position, out hit, 3.0f, NavMesh.AllAreas))
+        {
+            agent.navAgent.SetDestination(hit.position);
+        }
+
         RotateTowardPlayer();
 
         if (agent.firingSystem.IsInRange(agent.player.transform.position) && HasLOS() && IsAimed())
