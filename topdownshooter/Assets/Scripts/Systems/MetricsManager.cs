@@ -40,6 +40,7 @@ public class MetricsManager : MonoBehaviour
     private int episodeCount;
     private int playerWins;
     private int enemyWins;
+    private int winBit;    // 1 if player wins 0 if player loses
 
     private void Awake()
     {
@@ -95,16 +96,20 @@ public class MetricsManager : MonoBehaviour
 
         if (playerWon)
         {
-            playerHealthOnWin   = playerAgent.GetComponent<HealthSystem>().HealthPercent();
-            totalHealthOnWin   += playerHealthOnWin;
+            playerHealthOnWin = playerAgent.GetComponent<HealthSystem>().HealthPercent();
+            totalHealthOnWin += playerHealthOnWin;
             totalTimeAliveOnWin += timeAlive;
+            winBit = 1;
+
             playerWins++;
         }
         else
         {
-            enemyHealthOnLoss      = enemyAgent.GetComponent<HealthSystem>().HealthPercent();
+            enemyHealthOnLoss = enemyAgent.GetComponent<HealthSystem>().HealthPercent();
             totalEnemyHealthOnLoss += enemyHealthOnLoss;
-            totalTimeAliveOnLoss   += timeAlive;
+            totalTimeAliveOnLoss += timeAlive;
+            winBit = 0;
+
             enemyWins++;
         }
 
@@ -126,12 +131,13 @@ public class MetricsManager : MonoBehaviour
         float enemyAcc  = enemyShotsFired  > 0 ? (float)enemyShotsHit  / enemyShotsFired  : 0f;
         float avgHeat   = playerHeatSamples > 0 ? playerHeatAccumulator / playerHeatSamples : 0f;
 
-        stats.Add("Metrics/Player Accuracy",       playerAcc);
-        stats.Add("Metrics/Enemy Accuracy",        enemyAcc);
-        stats.Add("Metrics/Avg Heat Level",        avgHeat);
+        stats.Add("Metrics/Player Accuracy", playerAcc);
+        stats.Add("Metrics/Enemy Accuracy", enemyAcc);
+        stats.Add("Metrics/Avg Heat Level", avgHeat);
         stats.Add("Metrics/Shots Fired Per Round", playerShotsFired);
+        stats.Add("Metrics/Win Rate", winBit);
 
-        // Win/loss conditional metrics — only log when relevant
+        // Win/loss conditional metrics
         if (playerHealthOnWin > 0)
         {
             stats.Add("Metrics/Avg Health On Win",         playerHealthOnWin);

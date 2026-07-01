@@ -314,7 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2236b969d2526a046af60cf0ef7d93f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthBar
-  healthSystem: {fileID: 1450570958}
+  healthSystem: {fileID: 1450570965}
   fillImage: {fileID: 1928359723}
   gradient:
     serializedVersion: 2
@@ -458,7 +458,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.05
+  m_VoxelSize: 0.1
   m_BuildHeightMesh: 0
   m_MinRegionArea: 0
   m_HideEditorLogs: 0
@@ -1271,13 +1271,13 @@ GameObject:
   - component: {fileID: 1450570954}
   - component: {fileID: 1450570953}
   - component: {fileID: 1450570957}
-  - component: {fileID: 1450570958}
   - component: {fileID: 1450570960}
   - component: {fileID: 1450570964}
   - component: {fileID: 1450570962}
   - component: {fileID: 1450570963}
   - component: {fileID: 1450570959}
   - component: {fileID: 1450570961}
+  - component: {fileID: 1450570965}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1390,19 +1390,6 @@ MonoBehaviour:
   heatPerShot: 10
   overheatSlowDur: 3
   overheatSlow: 0.35
---- !u!114 &1450570958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1450570952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b123dbd85a01d8b4b9b4378360b4282b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
-  maxHealth: 100
 --- !u!50 &1450570959
 Rigidbody2D:
   serializedVersion: 5
@@ -1560,6 +1547,19 @@ MonoBehaviour:
   m_UseChildActuators: 1
   m_DeterministicInference: 0
   m_ObservableAttributeHandling: 0
+--- !u!114 &1450570965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450570952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60c055275f7c1ae49a56bc326542fb75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CombatantHealth
+  maxHealth: 100
 --- !u!1 &1504067374
 GameObject:
   m_ObjectHideFlags: 0
@@ -1879,7 +1879,6 @@ GameObject:
   - component: {fileID: 1870376628}
   - component: {fileID: 1870376627}
   - component: {fileID: 1870376626}
-  - component: {fileID: 1870376625}
   - component: {fileID: 1870376624}
   - component: {fileID: 1870376630}
   - component: {fileID: 1870376622}
@@ -1888,6 +1887,7 @@ GameObject:
   - component: {fileID: 1870376632}
   - component: {fileID: 1870376633}
   - component: {fileID: 1870376634}
+  - component: {fileID: 1870376635}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -1937,19 +1937,6 @@ MonoBehaviour:
   attackPrefab: {fileID: 194625958855148492, guid: 879a0a87b5a128d47ac63dbc6e4c5e2b, type: 3}
   fireRate: 4
   spreadRange: 45
---- !u!114 &1870376625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1870376620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b123dbd85a01d8b4b9b4378360b4282b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HealthSystem
-  maxHealth: 100
 --- !u!114 &1870376626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2165,6 +2152,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PAgentController
   player: {fileID: 1450570952}
   aimAngle: 2
+--- !u!114 &1870376635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870376620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60c055275f7c1ae49a56bc326542fb75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CombatantHealth
+  maxHealth: 100
 --- !u!1 &1928359721
 GameObject:
   m_ObjectHideFlags: 0

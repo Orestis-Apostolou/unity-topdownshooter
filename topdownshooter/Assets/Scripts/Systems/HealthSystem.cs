@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
@@ -5,15 +6,10 @@ public class HealthSystem : MonoBehaviour
     protected float health;
     public float maxHealth = 100f;
 
-    private void Awake()
+    protected void Awake()
     {
         health = maxHealth;
     }
-
-    //public void Update()
-    //{
-    //    Debug.Log("Health: " + HealthPercent() * 100 + "%");
-    //}
 
     public float HealthPercent()
     {
@@ -22,12 +18,11 @@ public class HealthSystem : MonoBehaviour
 
     public virtual void TakeDamage(float damage)
     {
-        // Safeguard so bullets don't deal damage while the round gets reset
+        // Safeguard so object doesn't get damaged between rounds
         if (GameManager.Instance.roundOver)
             return;
         
         health -= damage;
-        GameManager.Instance.OnAgentDamaged(gameObject);
         
         if (health <= 0)
         {
@@ -42,6 +37,6 @@ public class HealthSystem : MonoBehaviour
 
     protected virtual void OnDeath()
     {
-        GameManager.Instance.OnAgentDied(gameObject);
+        Destroy(gameObject);
     }
 }   

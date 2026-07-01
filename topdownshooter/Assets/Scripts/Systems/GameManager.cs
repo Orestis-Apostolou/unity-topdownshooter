@@ -15,10 +15,6 @@ public class GameManager : MonoBehaviour
     [Tooltip("Traditional Agent")]
     public GameObject enemyAgent;
 
-    // [Header("Breakable Walls")]
-    // [Tooltip("Drag all breakable wall GameObjects here.")]
-    // public List<GameObject> breakableWalls;
-
     [Header("Score (read-only in Inspector)")]
     [SerializeField] private int playerWins = 0;
     [SerializeField] private int enemyWins  = 0;
@@ -135,7 +131,7 @@ public class GameManager : MonoBehaviour
         ArenaGenerator.Instance.DestroyLayout();
         ArenaGenerator.Instance.GenerateLayout();
 
-        Debug.Log("[GameManager] Arena reset. New round started.");
+        //Debug.Log("[GameManager] Arena reset. New round started.");
     }
 
     private void ResetAgent(GameObject agent, Vector3 spawnPoint, Quaternion spawnRot)
@@ -163,5 +159,5 @@ public class GameManager : MonoBehaviour
         agent.SetActive(true);
     }  
 
-    // public string GetScoreString() => $"Player: {playerWins}  |  Enemy: {enemyWins}";
+     //public string GetScoreString() => $"Player: {playerWins}  |  Enemy: {enemyWins}";
 }
