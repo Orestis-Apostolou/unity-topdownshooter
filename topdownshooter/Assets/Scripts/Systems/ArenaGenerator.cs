@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -49,10 +50,10 @@ public class ArenaGenerator : MonoBehaviour
         CreateWall("WallLeft",   camCenter + new Vector2(-arenaSize.x / 2 - wallThickness / 2, 0), new Vector2(wallThickness, arenaSize.y + 2 * wallThickness));
         CreateWall("WallRight",  camCenter + new Vector2( arenaSize.x / 2 + wallThickness / 2, 0), new Vector2(wallThickness, arenaSize.y + 2 * wallThickness));
 
-        GenerateLayout();
+        StartCoroutine(GenerateLayout());
     }
 
-    public void GenerateLayout()
+    public IEnumerator GenerateLayout()
     {
         for (int x = -1; x <= 1; x++)
         {
@@ -75,6 +76,9 @@ public class ArenaGenerator : MonoBehaviour
                 instance.transform.parent = layoutsParent;
             }
         }
+
+        // Wait one frame for Unity to register new objects
+        yield return StartCoroutine(NavMeshUpdater.Instance.UpdateAndWait());
     }
 
     public void DestroyLayout()

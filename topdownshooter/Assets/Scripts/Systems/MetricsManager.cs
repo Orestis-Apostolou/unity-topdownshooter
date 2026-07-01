@@ -131,11 +131,11 @@ public class MetricsManager : MonoBehaviour
         float enemyAcc  = enemyShotsFired  > 0 ? (float)enemyShotsHit  / enemyShotsFired  : 0f;
         float avgHeat   = playerHeatSamples > 0 ? playerHeatAccumulator / playerHeatSamples : 0f;
 
-        stats.Add("Metrics/Player Accuracy", playerAcc);
-        stats.Add("Metrics/Enemy Accuracy", enemyAcc);
-        stats.Add("Metrics/Avg Heat Level", avgHeat);
-        stats.Add("Metrics/Shots Fired Per Round", playerShotsFired);
-        stats.Add("Metrics/Win Rate", winBit);
+        stats.Add("Metrics/Player Accuracy",        playerAcc);
+        stats.Add("Metrics/Enemy Accuracy",         enemyAcc);
+        stats.Add("Metrics/Avg Heat Level",         avgHeat);
+        stats.Add("Metrics/Shots Fired Per Round",  playerShotsFired);
+        stats.Add("Metrics/Win Rate",               winBit);
 
         // Win/loss conditional metrics
         if (playerHealthOnWin > 0)

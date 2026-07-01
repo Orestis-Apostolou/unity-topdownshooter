@@ -6,7 +6,7 @@ public class HealthSystem : MonoBehaviour
     protected float health;
     public float maxHealth = 100f;
 
-    protected void Awake()
+    private void Start()
     {
         health = maxHealth;
     }

@@ -103,10 +103,7 @@ public class GameManager : MonoBehaviour
         playerAgent.SetActive(false);
         enemyAgent.SetActive(false);
 
-        ArenaGenerator.Instance.GenerateLayout();
-
-        // Wait one frame for Unity to register new objects
-        yield return StartCoroutine(NavMeshUpdater.Instance.UpdateAndWait());
+        StartCoroutine(ArenaGenerator.Instance.GenerateLayout());
 
         ResetAgent(playerAgent, playerSpawn, playerRot);
         ResetAgent(enemyAgent, enemySpawn, enemyRot);
@@ -116,22 +113,6 @@ public class GameManager : MonoBehaviour
         {
             rlAgent?.EndEpisode();
         }
-    }
-
-    public void ResetGame()
-    {
-        roundOver = false;
-
-        foreach (GameObject bullet in GameObject.FindGameObjectsWithTag("Bullet"))
-            DestroyImmediate(bullet);
-
-        ResetAgent(playerAgent, playerSpawn, playerRot);
-        ResetAgent(enemyAgent,  enemySpawn, enemyRot);
-        
-        ArenaGenerator.Instance.DestroyLayout();
-        ArenaGenerator.Instance.GenerateLayout();
-
-        //Debug.Log("[GameManager] Arena reset. New round started.");
     }
 
     private void ResetAgent(GameObject agent, Vector3 spawnPoint, Quaternion spawnRot)
@@ -159,5 +140,5 @@ public class GameManager : MonoBehaviour
         agent.SetActive(true);
     }  
 
-     //public string GetScoreString() => $"Player: {playerWins}  |  Enemy: {enemyWins}";
+    // public string GetScoreString() => $"Player: {playerWins}  |  Enemy: {enemyWins}";
 }
