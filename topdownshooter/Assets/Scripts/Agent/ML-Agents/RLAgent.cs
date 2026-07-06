@@ -43,7 +43,7 @@ public class RLAgent : Agent
     {
         Vector2 toEnemy = (Vector2)(enemy.transform.position - transform.position);
         sensor.AddObservation(toEnemy.normalized);                  // 2
-        sensor.AddObservation(toEnemy.magnitude);                   // 2
+        sensor.AddObservation(toEnemy.magnitude);                   // 1
         sensor.AddObservation((Vector2)transform.up);               // 2
         sensor.AddObservation((Vector2)enemy.transform.up);         // 2
         sensor.AddObservation(healthSys.HealthPercent());           // 1
@@ -77,30 +77,30 @@ public class RLAgent : Agent
             heatSys.Fire();
         }
 
-        // Heat penalty proportional to current heat
-        AddReward(-0.001f * heatSys.HeatPercent());
+        //// Heat penalty proportional to current heat
+        //AddReward(-0.001f * heatSys.HeatPercent());
 
-        Vector2 toPlayer = (transform.position - enemy.transform.position);
-        float dot = Vector2.Dot((Vector2)enemy.transform.up, toPlayer.normalized);
-        if (dot > 0.9f) // enemy is roughly aimed at you
-        {
-            RaycastHit2D hit = Physics2D.Raycast(
-                enemy.transform.position,
-                toPlayer.normalized,
-                toPlayer.magnitude,
-                LayerMask.GetMask("Default") // replace with whatever your wall layer is
-            );
-            if (hit.collider != null && hit.collider.gameObject == gameObject)
-                AddReward(-0.002f); // in LOS and aimed at
-        }
+        //Vector2 toPlayer = (transform.position - enemy.transform.position);
+        //float dot = Vector2.Dot((Vector2)enemy.transform.up, toPlayer.normalized);
+        //if (dot > 0.9f) // enemy is roughly aimed at you
+        //{
+        //    RaycastHit2D hit = Physics2D.Raycast(
+        //        enemy.transform.position,
+        //        toPlayer.normalized,
+        //        toPlayer.magnitude,
+        //        LayerMask.GetMask("Default") // replace with whatever your wall layer is
+        //    );
+        //    if (hit.collider != null && hit.collider.gameObject == gameObject)
+        //        AddReward(-0.002f); // in LOS and aimed at
+        //}
 
-        Vector2 toEnemy = (enemy.transform.position - transform.position).normalized;
-        float facing = Vector2.Dot((Vector2)transform.up, toEnemy);
-        AddReward(facing * 0.004f);
+        //Vector2 toEnemy = (enemy.transform.position - transform.position).normalized;
+        //float facing = Vector2.Dot((Vector2)transform.up, toEnemy);
+        //AddReward(facing * 0.004f);
     }
 
-    // public override void Heuristic(in ActionBuffers actionsOut)
-    // {
-    //     // Heuristic can help test the agent with manual input
-    // }
+    //private void Update()
+    //{
+    //    Debug.Log("Observation Count: " + GetObservations().Count);
+    //}
 }
