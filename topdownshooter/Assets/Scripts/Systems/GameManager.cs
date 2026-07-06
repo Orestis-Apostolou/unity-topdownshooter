@@ -25,10 +25,10 @@ public class GameManager : MonoBehaviour
     [Header("Reset Settings")]
     public float resetDelay = 2.5f;
 
-    private Vector3 playerSpawn;
+    public Vector3 playerSpawn { get; private set; }
     private Quaternion playerRot;
 
-    private Vector3 enemySpawn;
+    public Vector3 enemySpawn { get; private set; }
     private Quaternion enemyRot;
 
     public bool roundOver {get; private set;} = false;
