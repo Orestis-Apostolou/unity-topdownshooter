@@ -103,4 +103,9 @@ public class RLAgent : Agent
     //{
     //    Debug.Log("Observation Count: " + GetObservations().Count);
     //}
+
+    private void FixedUpdate()
+    {
+        AddReward(-0.001f);
+    }
 }
