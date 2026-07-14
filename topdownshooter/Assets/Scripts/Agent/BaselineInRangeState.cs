@@ -6,12 +6,12 @@ public class BaselineInRangeState : State
 
     public override void Enter()
     {
-        agent.navAgent.enabled = false;
+        agent.navAgent.isStopped = true;
     }
 
     public override void Exit()
     {
-        agent.navAgent.enabled = true;
+        agent.navAgent.isStopped = false;
     }
 
     public override void FixedUpdate()
