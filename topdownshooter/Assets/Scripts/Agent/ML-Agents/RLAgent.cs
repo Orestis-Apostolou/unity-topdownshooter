@@ -51,6 +51,12 @@ public class RLAgent : Agent
         sensor.AddObservation(heatSys.IsOverheated);                // 1
         sensor.AddObservation(enemyHealthSys.HealthPercent());      // 1
         sensor.AddObservation(enemyHeatSys.HeatPercent());          // 1
+        sensor.AddObservation(enemyHeatSys.IsOverheated);           // 1
+        sensor.AddObservation(rb.linearVelocity);                   // 2
+        sensor.AddObservation(firingSys.CanFire());                 // 1
+
+        float angleToEnemy = Vector2.SignedAngle(transform.up, toEnemy.normalized);
+        sensor.AddObservation(angleToEnemy / 180f);                 // 1 (-1 to 1)
     }
 
     // Actions in code as specified from the Inspector

@@ -73,8 +73,8 @@ public class ArenaGenerator : MonoBehaviour
         {
             // The +1f represents padding from the arena walls
             Vector2 candidate = new Vector2(
-                Random.Range(-arenaSize.x / 2 + 1f, arenaSize.x / 2 - 1f),
-                Random.Range(-arenaSize.y / 2 + 1f, arenaSize.y / 2 - 1f)
+                Random.Range(-arenaSize.x / 2 + 2f, arenaSize.x / 2 - 2f),
+                Random.Range(-arenaSize.y / 2 + 2f, arenaSize.y / 2 - 2f)
             );
 
             // Pick random cluster for candidate

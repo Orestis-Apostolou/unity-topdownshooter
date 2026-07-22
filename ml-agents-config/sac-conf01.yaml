@@ -1,12 +1,12 @@
 behaviors:
-  YourAgentBehaviorName:
+  agent:
     trainer_type: sac    
     max_steps: 1000000         # Stop training after 1M steps. Increase for complex visual tasks
     time_horizon: 64           # How many steps of experience to collect per agent before adding to buffer
     summary_freq: 10000        # How often to write stats to TensorBoard (every 10k steps)
     keep_checkpoints: 5        # Max number of .onnx model checkpoints to keep
     checkpoint_interval: 50000 # Save a checkpoint model every 50k steps
-    threaded: true
+    threaded: false
 
     hyperparameters:
       # Experience Replay Buffer (Crucial for SAC)
@@ -20,7 +20,7 @@ behaviors:
       
       # Target Update & SAC Specifics
       tau: 0.005              # How aggressively target Q-networks track the trained twin Q-networks
-      steps_per_update: 1     # How many environment steps between gradient updates
+      steps_per_update: 10     # How many environment steps between gradient updates
       save_replay_buffer: false # Save the huge replay buffer on exit (takes lots of disk space if true)
       
       # Entropy Tuning (Exploration)
