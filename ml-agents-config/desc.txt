@@ -1,0 +1,16 @@
+ppo-mlp-conf.yaml
+
+> Config defines PPO network with larger network size (MLP) and no CNN.
+
+> Observations (14 + RayPerceptorSensor)
+sensor.AddObservation((Vector2)toEnemy);                    // 2
+sensor.AddObservation(angleToEnemy / 180f);                 // 1
+sensor.AddObservation((Vector2)transform.up);               // 2
+sensor.AddObservation((Vector2)enemy.transform.up);         // 2
+sensor.AddObservation(healthSys.HealthPercent());           // 1
+sensor.AddObservation(heatSys.HeatPercent());               // 1
+sensor.AddObservation(heatSys.IsOverheated);                // 1
+sensor.AddObservation(enemyHealthSys.HealthPercent());      // 1
+sensor.AddObservation(firingSys.CanFire());                 // 1
+sensor.AddObservation(rb.linearVelocity);                   // 2
+ 

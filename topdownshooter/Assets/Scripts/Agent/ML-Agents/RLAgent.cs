@@ -42,21 +42,18 @@ public class RLAgent : Agent
     public override void CollectObservations(VectorSensor sensor)
     {
         Vector2 toEnemy = (Vector2)(enemy.transform.position - transform.position);
-        sensor.AddObservation(toEnemy.normalized);                  // 2
-        sensor.AddObservation(toEnemy.magnitude);                   // 1
+        float angleToEnemy = Vector2.SignedAngle(transform.up, toEnemy.normalized);
+
+        sensor.AddObservation((Vector2)toEnemy);                    // 2
+        sensor.AddObservation(angleToEnemy / 180f);                 // 1
         sensor.AddObservation((Vector2)transform.up);               // 2
         sensor.AddObservation((Vector2)enemy.transform.up);         // 2
         sensor.AddObservation(healthSys.HealthPercent());           // 1
         sensor.AddObservation(heatSys.HeatPercent());               // 1
         sensor.AddObservation(heatSys.IsOverheated);                // 1
         sensor.AddObservation(enemyHealthSys.HealthPercent());      // 1
-        sensor.AddObservation(enemyHeatSys.HeatPercent());          // 1
-        sensor.AddObservation(enemyHeatSys.IsOverheated);           // 1
-        sensor.AddObservation(rb.linearVelocity);                   // 2
         sensor.AddObservation(firingSys.CanFire());                 // 1
-
-        float angleToEnemy = Vector2.SignedAngle(transform.up, toEnemy.normalized);
-        sensor.AddObservation(angleToEnemy / 180f);                 // 1 (-1 to 1)
+        sensor.AddObservation(rb.linearVelocity);                   // 2
     }
 
     // Actions in code as specified from the Inspector
@@ -112,6 +109,6 @@ public class RLAgent : Agent
 
     private void FixedUpdate()
     {
-        AddReward(-0.001f);
+        AddReward(-0.0001f);
     }
 }
