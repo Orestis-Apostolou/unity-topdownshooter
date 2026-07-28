@@ -113,7 +113,7 @@ public class RLAgent : Agent
     private void FixedUpdate()
     {
         timerCur += Time.fixedDeltaTime;
-        if( timerCur >= timerMax)
+        if(timerCur >= timerMax)
         {
             AddReward(-0.001f);
             timerCur = 0f;

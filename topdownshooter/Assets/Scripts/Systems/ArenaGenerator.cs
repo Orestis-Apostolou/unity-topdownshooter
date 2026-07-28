@@ -69,6 +69,9 @@ public class ArenaGenerator : MonoBehaviour
         int placed = 0;
         int attempts = 0;
 
+        // Randomize the number of attempts (more diversly populated arenas)
+        //maxAttempts = Random.Range(10, 301);
+
         while (placed < clusterCount && attempts < maxAttempts)
         {
             // The +1f represents padding from the arena walls

@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     [Header("Agent References")]
     [Tooltip("RL Agent / Player")]
     public GameObject playerAgent;
-    [SerializeField] private RLAgent rlAgent;
+    [SerializeField] private RLAgent playerRLScript;
+    [SerializeField] private RLAgent enemyRLScript;
 
     [Tooltip("Traditional Agent")]
     public GameObject enemyAgent;
@@ -42,7 +43,8 @@ public class GameManager : MonoBehaviour
         playerRot = playerAgent.transform.rotation;
         enemyRot = enemyAgent.transform.rotation;
         
-        rlAgent = playerAgent.GetComponent<RLAgent>();
+        playerRLScript = playerAgent.GetComponent<RLAgent>();
+        enemyRLScript = enemyAgent.GetComponent<RLAgent>();
 
         // Singleton setup
         if (Instance != null && Instance != this)
@@ -65,13 +67,17 @@ public class GameManager : MonoBehaviour
 
         if (deadAgent == playerAgent)
         {
+            // Enemy won
             enemyWins++;
-            rlAgent?.AddReward(-1f);
+            enemyRLScript?.AddReward(+1f);
+            playerRLScript?.AddReward(-1f);
         }
         else if (deadAgent == enemyAgent)
         {
+            // Player won
             playerWins++;
-            rlAgent?.AddReward(+1f);
+            playerRLScript?.AddReward(+1f);
+            enemyRLScript?.AddReward(-1f);
         }
 
         MetricsManager.Instance.OnRoundEnd(deadAgent == enemyAgent);
@@ -82,11 +88,15 @@ public class GameManager : MonoBehaviour
     {
         if(agent == playerAgent)
         {
-            rlAgent?.AddReward(-0.15f); // If the RL agent took damage
+            // Player took damage
+            enemyRLScript?.AddReward(+0.15f);
+            playerRLScript?.AddReward(-0.15f);
         }
         else if (agent == enemyAgent)
         {
-            rlAgent?.AddReward(+0.15f); // If the enemy agent took damage            
+            // Enemy took damage
+            enemyRLScript?.AddReward(-0.15f);
+            playerRLScript?.AddReward(+0.15f);          
         }
 
         MetricsManager.Instance.OnShotHit(agent);
@@ -111,7 +121,8 @@ public class GameManager : MonoBehaviour
         roundOver = false;
         if (Academy.Instance.IsCommunicatorOn)
         {
-            rlAgent?.EndEpisode();
+            playerRLScript?.EndEpisode();
+            enemyRLScript?.EndEpisode();
         }
     }
 
