@@ -5,8 +5,8 @@ behaviors:
     hyperparameters:
       batch_size: 2048
       buffer_size: 20480
-      learning_rate: 0.0003
-      beta: 0.01
+      learning_rate: 0.0001
+      beta: 0.005
       epsilon: 0.2
       lambd: 0.95
       num_epoch: 3
@@ -35,20 +35,14 @@ behaviors:
           memory: null
           goal_conditioning_type: hyper
           deterministic: false
-    init_path: null
+    init_path: results\ppo-mlp-conf03\agent\checkpoint.pt
     keep_checkpoints: 5
     even_checkpoints: false
     max_steps: 5000000
     time_horizon: 128
     summary_freq: 50000
     threaded: false
-    self_play:
-      save_steps: 20000
-      team_change: 0
-      swap_steps: 10000
-      window: 10
-      play_against_latest_model_ratio: 0.5
-      initial_elo: 1200.0
+    self_play: null
     behavioral_cloning: null
 env_settings:
   env_path: null
@@ -72,8 +66,8 @@ engine_settings:
   no_graphics_monitor: false
 environment_parameters: null
 checkpoint_settings:
-  run_id: ppo-mlp-conf02-self
-  initialize_from: null
+  run_id: ppo-mlp-finetune01
+  initialize_from: ppo-mlp-conf03
   load_model: false
   resume: false
   force: true
