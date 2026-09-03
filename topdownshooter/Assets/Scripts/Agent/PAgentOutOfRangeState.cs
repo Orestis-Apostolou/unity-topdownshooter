@@ -3,6 +3,10 @@ using UnityEngine.AI;
 using UnityEngine.TestTools;
 public class PAgentOutOfRangeState : State
 {
+    private float checkTimer = 0f;
+    private float checkInterval = PAgentDestroyCoverState.checkInterval;
+    private float coverHpThreshold = PAgentDestroyCoverState.hpThreshold;
+
     public PAgentOutOfRangeState(AgentController agent) : base(agent)
     {
         agent.navAgent.updateRotation = false;
@@ -15,6 +19,7 @@ public class PAgentOutOfRangeState : State
         agent.navAgent.SetDestination(agent.player.transform.position);
 
         NavMeshHit hit;
+        // Guard if enemy is slightly off of the navmesh
         if (NavMesh.SamplePosition(agent.player.transform.position, out hit, 3.0f, NavMesh.AllAreas))
         {
             agent.navAgent.SetDestination(hit.position);
@@ -22,8 +27,36 @@ public class PAgentOutOfRangeState : State
 
         RotateTowardPlayer();
 
-        if (agent.firingSystem.IsInRange(agent.player.transform.position) && HasLOS() && IsAimed())
+        if (HasLOS() && agent.firingSystem.IsInRange(agent.player.transform.position, 0.75f) && IsAimed())
+        {
+            // Enemy in range and LOS?
             agent.stateMachine.ChangeState(new PAgentInRangeState(agent));
+            return;
+        }
+
+        checkTimer -= Time.fixedDeltaTime;
+        if (checkTimer <= 0f)
+        {
+            checkTimer = checkInterval;
+
+            if (agent.firingSystem.IsInRange(agent.player.transform.position, 0.75f))
+            {
+                var result = PAgentController.CoverChecker.CheckCover(
+                    agent.transform.position,
+                    agent.player.transform.position
+                );
+
+                if (!result.hasLineOfSight && result.totalHP < coverHpThreshold)
+                {
+                    // Enemy in range and behind weak cover?
+                    agent.stateMachine.ChangeState(new PAgentDestroyCoverState(agent));
+                    return;
+                }
+            }
+        }
+
+        // If the enemy is behind strong cover, or out of range and LOS
+        // path to them via navmesh
     }
 
     private void RotateTowardPlayer()
@@ -34,20 +67,6 @@ public class PAgentOutOfRangeState : State
         agent.rb.MoveRotation(newRotation);
     }
 
-    private bool HasLOS()
-    {
-        Vector2 direction = (GetPredictedPosition() - (Vector2) agent.transform.position).normalized;
-        float distance = Vector2.Distance(agent.transform.position, agent.player.transform.position);
-
-        RaycastHit2D[] hits = Physics2D.RaycastAll(agent.transform.position, direction, distance);
-        foreach (RaycastHit2D hit in hits)
-        {
-            if (hit.collider.gameObject == agent.gameObject) continue;
-            if (hit.collider.gameObject == agent.player) continue;
-            return false; // Another object besides the player / agent is in the way
-        }
-        return true; // Clear LOS to the predicted player position
-    }
     private bool IsAimed()
     {
         Vector2 predicted = GetPredictedPosition();
@@ -65,5 +84,20 @@ public class PAgentOutOfRangeState : State
         float timeToHit = distance / agent.firingSystem.getProjSpeed();
 
         return playerPos + agent.playerVelocity * timeToHit;
+    }
+
+    private bool HasLOS()
+    {
+        Vector2 direction = (agent.player.transform.position - agent.transform.position).normalized;
+        float distance = Vector2.Distance(agent.transform.position, agent.player.transform.position);
+
+        // Cast a ray to see if the player is behind a wall (loop to ignore accidental self collision)
+        RaycastHit2D[] hits = Physics2D.RaycastAll(agent.transform.position, direction, distance);
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider.gameObject == agent.gameObject) continue;
+            return hit.collider.gameObject == agent.player;
+        }
+        return false;
     }
 }

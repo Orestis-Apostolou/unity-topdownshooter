@@ -4,7 +4,6 @@ using UnityEngine.AI;
 public class AgentController : MonoBehaviour
 {
     public StateMachine stateMachine = new StateMachine();
-
     public HeatSystem heatSystem { get; private set; }
     public HealthSystem healthSystem { get; private set; }
     public FiringSystem firingSystem { get; private set; }
@@ -19,7 +18,7 @@ public class AgentController : MonoBehaviour
     public float EffectiveMoveSpeed => movespeed * (heatSystem.IsOverheated ? heatSystem.overheatSlow : 1f);
 
     // At what (+ -) angle is the agent considered to be looking at the player
-    public float aimAngle = 2.0f;
+    public float aimAngle = 3.0f;
     public Vector2 playerVelocity { get; private set; }
     protected Vector2 lastPlayerPos;
 

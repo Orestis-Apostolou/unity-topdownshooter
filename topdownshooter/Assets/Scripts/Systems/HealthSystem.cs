@@ -16,6 +16,11 @@ public class HealthSystem : MonoBehaviour
         return health / maxHealth;
     }
 
+    public float CurrentHealth()
+    {
+        return health;
+    }
+
     public virtual void TakeDamage(float damage)
     {
         // Safeguard so object doesn't get damaged between rounds

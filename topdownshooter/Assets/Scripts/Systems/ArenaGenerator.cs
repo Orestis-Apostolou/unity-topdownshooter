@@ -74,10 +74,10 @@ public class ArenaGenerator : MonoBehaviour
 
         while (placed < clusterCount && attempts < maxAttempts)
         {
-            // The +1f represents padding from the arena walls
+            // The +/- x represents padding from the arena walls
             Vector2 candidate = new Vector2(
-                Random.Range(-arenaSize.x / 2 + 2f, arenaSize.x / 2 - 2f),
-                Random.Range(-arenaSize.y / 2 + 2f, arenaSize.y / 2 - 2f)
+                Random.Range(-arenaSize.x / 2 + 1.5f, arenaSize.x / 2 - 1.5f),
+                Random.Range(-arenaSize.y / 2 + 1.5f, arenaSize.y / 2 - 1.5f)
             );
 
             // Pick random cluster for candidate

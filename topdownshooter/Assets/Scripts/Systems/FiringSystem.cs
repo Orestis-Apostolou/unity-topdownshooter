@@ -7,7 +7,7 @@ public class FiringSystem : MonoBehaviour
     public float fireRate = 4f;
     public float spreadRange = 45f; // In degrees
 
-    private float fireCooldown = 1.0f;
+    private float fireCooldown = 0.0f;
     private Attack AttackScript;
 
     private void Awake()

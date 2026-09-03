@@ -4,6 +4,15 @@ public class BaselineOverheatedState : State
 {
     public BaselineOverheatedState(AgentController agent) : base(agent) { }
 
+    public override void Enter()
+    {
+        agent.navAgent.isStopped = true;
+    }
+
+    public override void Exit()
+    {
+        agent.navAgent.isStopped = false;
+    }
     public override void FixedUpdate()
     {
         Vector2 direction = (agent.player.transform.position - agent.transform.position).normalized;

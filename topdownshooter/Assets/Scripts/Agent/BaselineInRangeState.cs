@@ -18,7 +18,7 @@ public class BaselineInRangeState : State
     {
         RotateTowardPlayer();
 
-        if (IsAimed() && agent.firingSystem.CanFire() && agent.heatSystem.CanFireSafe())
+        if (IsAimed() && HasLOS() && agent.firingSystem.CanFire() && agent.heatSystem.CanFireSafe())
         {
             agent.firingSystem.Fire();
             agent.heatSystem.Fire();
@@ -26,7 +26,7 @@ public class BaselineInRangeState : State
 
         if (agent.heatSystem.HeatPercent() >= 0.85f)
             agent.stateMachine.ChangeState(new BaselineOverheatedState(agent));
-        else if (!agent.firingSystem.IsInRange(agent.player.transform.position, 0.75f))
+        else if (!agent.firingSystem.IsInRange(agent.player.transform.position, 0.75f) || !HasLOS())
             agent.stateMachine.ChangeState(new BaselineOutOfRangeState(agent));
     }
 
@@ -43,5 +43,20 @@ public class BaselineInRangeState : State
         Vector2 direction = (agent.player.transform.position - agent.transform.position).normalized;
         float targetAngle = Vector2.SignedAngle(Vector2.up, direction);
         return Mathf.Abs(Mathf.DeltaAngle(agent.rb.rotation, targetAngle)) < agent.aimAngle;
+    }
+
+    private bool HasLOS()
+    {
+        Vector2 direction = (agent.player.transform.position - agent.transform.position).normalized;
+        float distance = Vector2.Distance(agent.transform.position, agent.player.transform.position);
+
+        // Cast a ray to see if the player is behind a wall (loop to ignore accidental self collision)
+        RaycastHit2D[] hits = Physics2D.RaycastAll(agent.transform.position, direction, distance);
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider.gameObject == agent.gameObject) continue;
+            return hit.collider.gameObject == agent.player;
+        }
+        return false;
     }
 }
