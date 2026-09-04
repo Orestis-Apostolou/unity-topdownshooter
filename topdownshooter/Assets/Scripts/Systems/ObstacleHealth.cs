@@ -1,6 +1,3 @@
-using UnityEditor.Rendering;
-using UnityEngine;
-
 public class ObstacleHealth : HealthSystem
 {
     void OnDestroy()
