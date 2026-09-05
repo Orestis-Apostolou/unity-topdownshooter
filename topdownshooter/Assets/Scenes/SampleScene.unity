@@ -1526,7 +1526,7 @@ GameObject:
   - component: {fileID: 1450570962}
   - component: {fileID: 1450570964}
   - component: {fileID: 1450570963}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1831,7 +1831,7 @@ MonoBehaviour:
   m_RayLength: 13
   m_RayLayerMask:
     serializedVersion: 2
-    m_Bits: 51
+    m_Bits: 59
   m_ObservationStacks: 1
   m_AlternatingRayOrder: 1
   m_UseBatchedRaycasts: 0
@@ -1867,8 +1867,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   playerAgent: {fileID: 1450570952}
-  playerRLScript: {fileID: 0}
-  enemyRLScript: {fileID: 0}
+  playerRLScript: {fileID: 1450570962}
+  enemyRLScript: {fileID: 1870376638}
   enemyAgent: {fileID: 1870376620}
   playerWins: 0
   enemyWins: 0
@@ -2121,10 +2121,10 @@ GameObject:
   - component: {fileID: 1870376629}
   - component: {fileID: 1870376631}
   - component: {fileID: 1870376632}
+  - component: {fileID: 1870376639}
   - component: {fileID: 1870376638}
   - component: {fileID: 1870376637}
   - component: {fileID: 1870376636}
-  - component: {fileID: 1870376639}
   - component: {fileID: 1870376633}
   m_Layer: 3
   m_Name: Agent
@@ -2491,7 +2491,7 @@ MonoBehaviour:
   m_RayLength: 13
   m_RayLayerMask:
     serializedVersion: 2
-    m_Bits: 51
+    m_Bits: 307
   m_ObservationStacks: 1
   m_AlternatingRayOrder: 1
   m_UseBatchedRaycasts: 0

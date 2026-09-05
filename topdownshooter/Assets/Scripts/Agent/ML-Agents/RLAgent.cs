@@ -110,13 +110,13 @@ public class RLAgent : Agent
     private float timerMax = 1f;
     private float timerCur;
 
-    //private void FixedUpdate()
-    //{
-    //    timerCur += Time.fixedDeltaTime;
-    //    if(timerCur >= timerMax)
-    //    {
-    //        AddReward(-0.001f);
-    //        timerCur = 0f;
-    //    }
-    //}
+    private void FixedUpdate()
+    {
+        timerCur += Time.fixedDeltaTime;
+        if (timerCur >= timerMax)
+        {
+            AddReward(-0.001f);
+            timerCur = 0f;
+        }
+    }
 }

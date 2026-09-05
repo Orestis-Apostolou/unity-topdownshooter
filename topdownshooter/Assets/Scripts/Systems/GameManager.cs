@@ -1,6 +1,5 @@
 using System.Collections;
 using Unity.MLAgents;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -113,7 +112,8 @@ public class GameManager : MonoBehaviour
         playerAgent.SetActive(false);
         enemyAgent.SetActive(false);
 
-        StartCoroutine(ArenaGenerator.Instance.GenerateLayout());
+
+        yield return StartCoroutine(ArenaGenerator.Instance.GenerateLayout());
 
         ResetAgent(playerAgent, playerSpawn, playerRot);
         ResetAgent(enemyAgent, enemySpawn, enemyRot);
