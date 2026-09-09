@@ -49,9 +49,10 @@ public class PlayerController : MonoBehaviour
     {
         // Apply potential overheat slow
         float effectiveMoveSpeed = movespeed * (heatSystem.IsOverheated ? heatSystem.overheatSlow : 1f);
+        Debug.Log("Eff MS: " + effectiveMoveSpeed);
 
         Vector2 movement = new Vector2(moveInput.x, moveInput.y);
-        rb.MovePosition(rb.position + movement * movespeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement * effectiveMoveSpeed * Time.fixedDeltaTime);
         rb.MoveRotation(rb.rotation + rotspeed * Time.fixedDeltaTime * -rotInput);
     }
 

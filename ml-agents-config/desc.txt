@@ -13,4 +13,9 @@ sensor.AddObservation(heatSys.IsOverheated);                // 1
 sensor.AddObservation(enemyHealthSys.HealthPercent());      // 1
 sensor.AddObservation(firingSys.CanFire());                 // 1
 sensor.AddObservation(rb.linearVelocity);                   // 2
- 
+
+NS => No Self
+B => Base
+A => Advanced
+NTP => No Time Penalty
+Cx => Config x

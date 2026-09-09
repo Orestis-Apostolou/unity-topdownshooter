@@ -27,6 +27,6 @@ public class NavMeshUpdater : MonoBehaviour
     public IEnumerator UpdateAndWait()
     {
         var op = surface.UpdateNavMesh(surface.navMeshData);
-        yield return op; // waits until navmesh is fully built
+        yield return op;
     }
 }

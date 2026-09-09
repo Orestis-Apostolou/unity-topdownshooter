@@ -15,7 +15,8 @@ public class HeatSystem : MonoBehaviour
 
     [Header("Overheat Settings")]
     public float overheatSlowDur = 3f;      // Seconds of slow when hitting 100% on heat
-    public float overheatSlow = 0.35f;      // Slow factor
+    public float overheatSlow = 1f;         // Slow factor (inactive)
+    public float overheatThresh = 0.9f;
     
     public bool IsOverheated => isOverheated;
 
@@ -36,7 +37,7 @@ public class HeatSystem : MonoBehaviour
     {
         heat += heatPerShot;
 
-        if (heat >= maxHeat)
+        if (heat >= maxHeat * overheatThresh)
         {
             isOverheated = true;
             overheatTimer = overheatSlowDur;

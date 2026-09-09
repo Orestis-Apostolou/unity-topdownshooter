@@ -12,7 +12,7 @@ public class PAgentDestroyCoverState : State
 
     public override void Enter()
     {
-        Debug.Log("Entered InRangeState");
+        //Debug.Log("Entered DestroyCoverState");
     }
 
     public override void FixedUpdate()

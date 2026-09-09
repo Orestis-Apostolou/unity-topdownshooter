@@ -9,6 +9,7 @@ public class PAgentOutOfRangeState : State
 
     public PAgentOutOfRangeState(AgentController agent) : base(agent)
     {
+        Debug.Log("Out of Range");
         agent.navAgent.updateRotation = false;
         agent.navAgent.updateUpAxis = false;
     }
@@ -91,13 +92,25 @@ public class PAgentOutOfRangeState : State
         Vector2 direction = (agent.player.transform.position - agent.transform.position).normalized;
         float distance = Vector2.Distance(agent.transform.position, agent.player.transform.position);
 
-        // Cast a ray to see if the player is behind a wall (loop to ignore accidental self collision)
         RaycastHit2D[] hits = Physics2D.RaycastAll(agent.transform.position, direction, distance);
+
+        RaycastHit2D closest = default;
+        float closestDist = float.MaxValue;
+        bool found = false;
+
         foreach (RaycastHit2D hit in hits)
         {
             if (hit.collider.gameObject == agent.gameObject) continue;
-            return hit.collider.gameObject == agent.player;
+            if (hit.collider.CompareTag("Bullet")) continue;
+
+            if (hit.distance < closestDist)
+            {
+                closestDist = hit.distance;
+                closest = hit;
+                found = true;
+            }
         }
-        return false;
+
+        return found && closest.collider.gameObject == agent.player;
     }
 }

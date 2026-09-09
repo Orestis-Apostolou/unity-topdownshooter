@@ -113,10 +113,22 @@ public class GameManager : MonoBehaviour
         enemyAgent.SetActive(false);
 
 
-        yield return StartCoroutine(ArenaGenerator.Instance.GenerateLayout());
+        StartCoroutine(ArenaGenerator.Instance.GenerateLayout());
 
-        ResetAgent(playerAgent, playerSpawn, playerRot);
-        ResetAgent(enemyAgent, enemySpawn, enemyRot);
+        Vector2 roundPlayerSpawn = playerSpawn;
+        Vector2 roundEnemySpawn = enemySpawn;
+
+        // Swap the spawns 50% of the time
+        if (Random.value < 0.5f)
+        {
+            roundPlayerSpawn = enemySpawn;
+            roundEnemySpawn = playerSpawn;
+            
+            // Swap rotations if needed !!! (currently they are the same)
+        }
+
+        ResetAgent(playerAgent, roundPlayerSpawn, playerRot);
+        ResetAgent(enemyAgent, roundEnemySpawn, enemyRot);
 
         roundOver = false;
         if (Academy.Instance.IsCommunicatorOn)

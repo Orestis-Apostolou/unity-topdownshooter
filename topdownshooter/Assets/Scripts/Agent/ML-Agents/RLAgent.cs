@@ -107,16 +107,16 @@ public class RLAgent : Agent
     //    Debug.Log("Observation Count: " + GetObservations().Count);
     //}
 
-    private float timerMax = 1f;
-    private float timerCur;
+    //private float timerMax = 1f;
+    //private float timerCur;
 
-    private void FixedUpdate()
-    {
-        timerCur += Time.fixedDeltaTime;
-        if (timerCur >= timerMax)
-        {
-            AddReward(-0.001f);
-            timerCur = 0f;
-        }
-    }
+    //private void FixedUpdate()
+    //{
+    //    timerCur += Time.fixedDeltaTime;
+    //    if (timerCur >= timerMax)
+    //    {
+    //        AddReward(-0.001f);
+    //        timerCur = 0f;
+    //    }
+    //}
 }
