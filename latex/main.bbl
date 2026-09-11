@@ -1,0 +1,16 @@
+\begin{thebibliography}{}
+
+\bibitem[Kempka et~al., 2016]{kempka2016vizdoom}
+Kempka, M., Wydmuch, M., Runc, G., Toczek, J., and Ja{\'s}kowski, W. (2016).
+\newblock Vizdoom: A doom-based ai research platform for visual reinforcement
+  learning.
+\newblock In {\em 2016 IEEE conference on computational intelligence and games
+  (CIG)}, pages 1--8. IEEE.
+
+\bibitem[Liu et~al., 2025]{liu2025}
+Liu, T., Cann, A., Colbert, I., and Naderi, M. (2025).
+\newblock Combining reinforcement learning and behavior trees for npcs in video
+  games with amd schola.
+\newblock {\em arXiv preprint arXiv:2510.14154}.
+
+\end{thebibliography}

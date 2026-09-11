@@ -17,8 +17,8 @@ behaviors:
     checkpoint_interval: 500000
     network_settings:
       normalize: true
-      hidden_units: 512
-      num_layers: 3
+      hidden_units: 256
+      num_layers: 2
       vis_encode_type: simple
       memory: null
       goal_conditioning_type: hyper
@@ -41,7 +41,7 @@ behaviors:
     max_steps: 10000000
     time_horizon: 128
     summary_freq: 50000
-    threaded: true
+    threaded: false
     self_play:
       save_steps: 40000
       team_change: 0
@@ -72,7 +72,7 @@ engine_settings:
   no_graphics_monitor: false
 environment_parameters: null
 checkpoint_settings:
-  run_id: S-NTP-C1
+  run_id: S-NTP-C2
   initialize_from: null
   load_model: false
   resume: true
