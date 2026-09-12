@@ -1,14 +1,26 @@
 using UnityEngine;
 using Unity.MLAgents;
+using System.Collections.Generic;
+using System.IO;
 
 public class MetricsManager : MonoBehaviour
 {
     public static MetricsManager Instance { get; private set; }
 
+    [Header("Evaluation Settings")]
+    public int totalEpisodesToRun = 100; // Πόσα επεισόδια θα κρατήσει το benchmark
+    [Range(1f, 50f)]
+    public float simulationSpeed = 10f;  // Επιτάχυνση simulation
+    public string csvFileName = "Inference_Results.csv";
+
     [Header("References")]
     public GameObject playerAgent;
     public GameObject enemyAgent;
     private HeatSystem playerHeatSys;
+
+    // List tracking for precise CSV Export & Statistics
+    private List<float> episodeRewards = new List<float>();
+    private List<float> episodeDurations = new List<float>();
 
     // Round Timer
     private float roundStartTime;
@@ -16,19 +28,18 @@ public class MetricsManager : MonoBehaviour
     // Accuracy
     private int playerShotsFired;
     private int playerShotsHit;
-
     private int enemyShotsFired;
     private int enemyShotsHit;
 
     // Health related metrics
-    private float playerHealthOnWin;      // player HP when enemy dies
-    private float enemyHealthOnLoss;      // enemy HP when player dies
+    private float playerHealthOnWin;
+    private float enemyHealthOnLoss;
 
     // Heat related metrics
-    private float playerHeatAccumulator;  // sum of heat samples this round
-    private int   playerHeatSamples;      // how many samples taken
+    private float playerHeatAccumulator;
+    private int playerHeatSamples;
 
-    // Accumulated metrics (averaged across episodes)
+    // Accumulated metrics
     private float totalAccuracyPlayer;
     private float totalAccuracyEnemy;
     private float totalHealthOnWin;
@@ -40,7 +51,7 @@ public class MetricsManager : MonoBehaviour
     private int episodeCount;
     private int playerWins;
     private int enemyWins;
-    private int winBit;    // 1 if player wins 0 if player loses
+    private int winBit;
 
     private void Awake()
     {
@@ -51,31 +62,32 @@ public class MetricsManager : MonoBehaviour
     private void Start()
     {
         playerHeatSys = playerAgent.GetComponent<HeatSystem>();
+
+        // 1. Επιτάχυνση του χρόνου κατά την έναρξη του Inference
+        Time.timeScale = simulationSpeed;
+        Time.fixedDeltaTime = 0.02f / simulationSpeed;
+
         ResetRoundMetrics();
     }
 
     private void FixedUpdate()
     {
-        // Sample heat every physics step
         playerHeatAccumulator += playerHeatSys.HeatPercent();
         playerHeatSamples++;
     }
 
-    // Called from FiringSystem script
     public void OnShotFired(GameObject shooter)
     {
         if (shooter == playerAgent) playerShotsFired++;
         else enemyShotsFired++;
     }
 
-    // Called from GameManager script
     public void OnShotHit(GameObject victim)
     {
         if (victim == playerAgent) enemyShotsHit++;
         else playerShotsHit++;
     }
 
-    // Called from GameManager script
     public void OnRoundEnd(bool playerWon)
     {
         float timeAlive = Time.time - roundStartTime;
@@ -86,6 +98,17 @@ public class MetricsManager : MonoBehaviour
             ? (float)enemyShotsHit  / enemyShotsFired  : 0f;
         float avgHeat = playerHeatSamples > 0 
             ? playerHeatAccumulator / playerHeatSamples : 0f;
+
+        // 2. Συλλογή του RLAgent Cumulative Reward
+        float currentReward = 0f;
+        var rlAgentScript = playerAgent.GetComponent<RLAgent>();
+        if (rlAgentScript != null)
+        {
+            currentReward = rlAgentScript.GetCumulativeReward();
+        }
+
+        episodeRewards.Add(currentReward);
+        episodeDurations.Add(timeAlive);
 
         // Accumulate for running averages
         totalAccuracyPlayer += playerAccuracy;
@@ -100,7 +123,6 @@ public class MetricsManager : MonoBehaviour
             totalHealthOnWin += playerHealthOnWin;
             totalTimeAliveOnWin += timeAlive;
             winBit = 1;
-
             playerWins++;
         }
         else
@@ -109,24 +131,30 @@ public class MetricsManager : MonoBehaviour
             totalEnemyHealthOnLoss += enemyHealthOnLoss;
             totalTimeAliveOnLoss += timeAlive;
             winBit = 0;
-
             enemyWins++;
         }
 
-        Debug.Log($"[MetricsManager] Score: PLAYER {playerWins} | ENEMY {enemyWins}");
+        Debug.Log($"[MetricsManager] Episode {episodeCount}/{totalEpisodesToRun} | Score: PLAYER {playerWins} - ENEMY {enemyWins} | Reward: {currentReward:F2}");
 
         LogToStatsRecorder();
-        ResetRoundMetrics();
+
+        // 3. Έλεγχος αν ολοκληρώθηκαν τα επεισόδια του Evaluation
+        if (episodeCount >= totalEpisodesToRun)
+        {
+            FinishEvaluation();
+        }
+        else
+        {
+            ResetRoundMetrics();
+        }
     }
 
-    // Load metrics to TensorBoard
     private void LogToStatsRecorder()
     {
         if (!Academy.Instance.IsCommunicatorOn) return;
 
         var stats = Academy.Instance.StatsRecorder;
 
-        // Per-episode metrics
         float playerAcc = playerShotsFired > 0 ? (float)playerShotsHit / playerShotsFired : 0f;
         float enemyAcc  = enemyShotsFired  > 0 ? (float)enemyShotsHit  / enemyShotsFired  : 0f;
         float avgHeat   = playerHeatSamples > 0 ? playerHeatAccumulator / playerHeatSamples : 0f;
@@ -137,7 +165,6 @@ public class MetricsManager : MonoBehaviour
         stats.Add("Metrics/Shots Fired Per Round",  playerShotsFired);
         stats.Add("Metrics/Win Rate",               winBit);
 
-        // Win/loss conditional metrics
         if (playerHealthOnWin > 0)
         {
             stats.Add("Metrics/Avg Health On Win",         playerHealthOnWin);
@@ -161,5 +188,64 @@ public class MetricsManager : MonoBehaviour
         enemyHealthOnLoss     = 0f;
         playerHeatAccumulator = 0f;
         playerHeatSamples     = 0;
+    }
+
+    // 4. Υπολογισμός τελικών στατιστικών & Εξαγωγή σε CSV
+    private void FinishEvaluation()
+    {
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
+
+        float winRate = ((float)playerWins / totalEpisodesToRun) * 100f;
+
+        // Mean Reward & Standard Deviation
+        float sumReward = 0f;
+        foreach (float r in episodeRewards) sumReward += r;
+        float meanReward = sumReward / totalEpisodesToRun;
+
+        float sumSquares = 0f;
+        foreach (float r in episodeRewards) sumSquares += Mathf.Pow(r - meanReward, 2);
+        float stdDevReward = Mathf.Sqrt(sumSquares / totalEpisodesToRun);
+
+        Debug.Log("=========================================");
+        Debug.Log($"=== EVALUATION COMPLETED ({totalEpisodesToRun} Episodes) ===");
+        Debug.Log($"Win Rate: {winRate:F2}%");
+        Debug.Log($"Mean Reward: {meanReward:F2} (±{stdDevReward:F2})");
+        Debug.Log($"Avg Player Accuracy: {(totalAccuracyPlayer / totalEpisodesToRun) * 100f:F1}%");
+        Debug.Log("=========================================");
+
+        SaveToCSV(winRate, meanReward, stdDevReward);
+
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
+    }
+
+    private void SaveToCSV(float winRate, float meanReward, float stdDev)
+    {
+        string filePath = Path.Combine(Application.dataPath, csvFileName);
+        using (StreamWriter writer = new StreamWriter(filePath, false))
+        {
+            writer.WriteLine("Episode,Reward,DurationSec");
+            for (int i = 0; i < episodeRewards.Count; i++)
+            {
+                writer.WriteLine($"{i + 1},{episodeRewards[i].ToString("F2", System.Globalization.CultureInfo.InvariantCulture)},{episodeDurations[i].ToString("F2", System.Globalization.CultureInfo.InvariantCulture)}");
+            }
+            writer.WriteLine();
+            writer.WriteLine("Summary Metric,Value");
+            writer.WriteLine($"Win Rate (%),{winRate.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)}");
+            writer.WriteLine($"Mean Reward,{meanReward.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)}");
+            writer.WriteLine($"Std Dev Reward,{stdDev.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)}");
+            writer.WriteLine($"Avg Player Accuracy (%),{((totalAccuracyPlayer / totalEpisodesToRun) * 100f).ToString("F2", System.Globalization.CultureInfo.InvariantCulture)}");
+            writer.WriteLine($"Avg Shots Fired,{ (totalShotsFiredPerRound / totalEpisodesToRun).ToString("F2", System.Globalization.CultureInfo.InvariantCulture)}");
+        }
+
+        Debug.Log($"[CSV SAVED] File saved successfully at: {filePath}");
+    }
+
+    private void OnDestroy()
+    {
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f;
     }
 }

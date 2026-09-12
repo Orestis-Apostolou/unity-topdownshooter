@@ -1,6 +1,53 @@
-\contentsline {table}{\numberline {1}{\ignorespaces \xpg@aux {}{greek}\ignorespaces Παράμετροι Περιβάλλοντος}}{31}{table.1}%
-\contentsline {table}{\numberline {2}{\ignorespaces \xpg@aux {}{greek}\ignorespaces Παράμετροι Σύνθετης Εκδοχής Πράκτορα Βασισμένου σε Κανόνες}}{34}{table.2}%
-\contentsline {table}{\numberline {3}{\ignorespaces \xpg@aux {}{greek}\ignorespaces Διαμόρφωση Υπερπαραμέτρων PPO}}{39}{table.3}%
-\contentsline {table}{\numberline {4}{\ignorespaces \xpg@aux {}{greek}\ignorespaces Διαμόρφωση Υπερπαραμέτρων Self-Play}}{48}{table.4}%
-\contentsline {table}{\numberline {5}{\ignorespaces \xpg@aux {}{greek}\ignorespaces Διαμόρφωση Υπερπαραμέτρων Fine-Tune (Βασική Εκδοχή)}}{53}{table.5}%
-\contentsline {table}{\numberline {6}{\ignorespaces \xpg@aux {}{greek}\ignorespaces Συγκριτικός πίνακας παραμέτρων και απόδοσης εκπαίδευσης πειραμάτων}}{56}{table.6}%
+\xpginauxfiletrue 
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\contentsline {table}{\numberline {1}{\ignorespaces Παράμετροι Περιβάλλοντος}}{31}{table.1}%
+\setforeignlanguage {greek}
+\contentsline {table}{\numberline {2}{\ignorespaces Παράμετροι Σύνθετης Εκδοχής Πράκτορα Βασισμένου σε Κανόνες}}{35}{table.2}%
+\setforeignlanguage {greek}
+\contentsline {table}{\numberline {3}{\ignorespaces Διαμόρφωση Υπερπαραμέτρων PPO}}{40}{table.3}%
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\contentsline {table}{\numberline {4}{\ignorespaces Διαμόρφωση Υπερπαραμέτρων Self-Play}}{49}{table.4}%
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\contentsline {table}{\numberline {5}{\ignorespaces Διαμόρφωση Υπερπαραμέτρων Fine-Tuning (Βασική Εκδοχή)}}{54}{table.5}%
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\setforeignlanguage {greek}
+\contentsline {table}{\numberline {6}{\ignorespaces Συγκριτικός πίνακας παραμέτρων και απόδοσης εκπαίδευσης πειραμάτων}}{57}{table.6}%
+\xpginauxfilefalse 

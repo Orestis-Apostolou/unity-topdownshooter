@@ -514,6 +514,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d03805af776b1bdffaf47c62dc77e5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  totalEpisodesToRun: 500
+  simulationSpeed: 10
+  csvFileName: Inference_Results.csv
   playerAgent: {fileID: 1450570952}
   enemyAgent: {fileID: 1870376620}
 --- !u!1 &519420028
@@ -1787,7 +1790,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 7a574270111047a4c9497f5cdffb726b, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 2914ca72ba0b95a41a5c9383cbf27869, type: 3}
   m_InferenceDevice: 2
   m_BehaviorType: 0
   m_BehaviorName: agent
